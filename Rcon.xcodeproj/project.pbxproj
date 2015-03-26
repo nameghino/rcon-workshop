@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C30F1AC3B93A0066F83D /* AppDelegate.swift */; };
-		3581C3121AC3B93A0066F83D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C3111AC3B93A0066F83D /* ViewController.swift */; };
 		3581C3151AC3B93A0066F83D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		3581C3171AC3B93A0066F83D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
 		3581C31A1AC3B93A0066F83D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3181AC3B93A0066F83D /* LaunchScreen.xib */; };
 		3581C3261AC3B93A0066F83D /* RconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C3251AC3B93A0066F83D /* RconTests.swift */; };
+		3581C3301AC3C1590066F83D /* AppliancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +29,13 @@
 		3581C30A1AC3B93A0066F83D /* Rcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3581C30E1AC3B93A0066F83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581C30F1AC3B93A0066F83D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3581C3111AC3B93A0066F83D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3581C3141AC3B93A0066F83D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3581C3161AC3B93A0066F83D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3581C3191AC3B93A0066F83D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3581C31F1AC3B93A0066F83D /* RconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3581C3241AC3B93A0066F83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581C3251AC3B93A0066F83D /* RconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RconTests.swift; sourceTree = "<group>"; };
+		3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppliancesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				3581C30F1AC3B93A0066F83D /* AppDelegate.swift */,
-				3581C3111AC3B93A0066F83D /* ViewController.swift */,
 				3581C3131AC3B93A0066F83D /* Main.storyboard */,
 				3581C3161AC3B93A0066F83D /* Images.xcassets */,
 				3581C3181AC3B93A0066F83D /* LaunchScreen.xib */,
 				3581C30D1AC3B93A0066F83D /* Supporting Files */,
+				3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */,
 			);
 			path = Rcon;
 			sourceTree = "<group>";
@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					3581C3091AC3B93A0066F83D = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = A45WY99R85;
 					};
 					3581C31E1AC3B93A0066F83D = {
 						CreatedOnToolsVersion = 6.3;
@@ -212,7 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3581C3121AC3B93A0066F83D /* ViewController.swift in Sources */,
+				3581C3301AC3C1590066F83D /* AppliancesViewController.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,9 +343,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -352,9 +355,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
