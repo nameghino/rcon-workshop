@@ -81,7 +81,7 @@ class ApplianceCell: UICollectionViewCell {
     }
     
     func removePulseAnimation() {
-        layer.removeAnimationForKey("iconPulseAnimation")
+        applianceButton.imageView?.layer.removeAnimationForKey("iconPulseAnimation")
     }
     
     override func prepareForReuse() {
