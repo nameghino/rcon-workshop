@@ -10,6 +10,7 @@
 		3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
 		3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEB1AC5D11E00803976 /* Appliance.swift */; };
 		3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */; };
+		3552DEF11AC5F4AA00803976 /* SparkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF01AC5F4AA00803976 /* SparkService.swift */; };
 		3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C30F1AC3B93A0066F83D /* AppDelegate.swift */; };
 		3581C3151AC3B93A0066F83D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		3581C3171AC3B93A0066F83D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 		3552DEE91AC5D0CA00803976 /* SparkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkCore.swift; sourceTree = "<group>"; };
 		3552DEEB1AC5D11E00803976 /* Appliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appliance.swift; sourceTree = "<group>"; };
 		3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplianceCell.swift; sourceTree = "<group>"; };
+		3552DEF01AC5F4AA00803976 /* SparkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkService.swift; sourceTree = "<group>"; };
 		3581C30A1AC3B93A0066F83D /* Rcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3581C30E1AC3B93A0066F83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581C30F1AC3B93A0066F83D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3581C3181AC3B93A0066F83D /* LaunchScreen.xib */,
 				3581C30D1AC3B93A0066F83D /* Supporting Files */,
 				3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */,
+				3552DEF01AC5F4AA00803976 /* SparkService.swift */,
 			);
 			path = Rcon;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
 				3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */,
+				3552DEF11AC5F4AA00803976 /* SparkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
