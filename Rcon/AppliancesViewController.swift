@@ -74,8 +74,7 @@ extension AppliancesViewController: ApplianceCellDelegate {
         NSLog("toggle appliance state")
         if let indexPath = appliancesCollectionView.indexPathForCell(cell) {
             var appliance = SharedApplianceManager.appliances[indexPath.item]
-            appliance.isOn = !appliance.isOn
-//            appliancesCollectionView.reloadData()
+            appliance.toggle()
             appliancesCollectionView.reloadItemsAtIndexPaths([indexPath])
         }
     }
