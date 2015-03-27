@@ -26,8 +26,11 @@ class ApplianceCell: UICollectionViewCell {
     }
     
     func setup() {
-        applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
+        contentView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
+        
+        applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
         //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
     }
     
@@ -39,11 +42,20 @@ class ApplianceCell: UICollectionViewCell {
     func setAppliance(appliance: Appliance) {
         
         let color: UIColor
-        if appliance.isOn {
-            color = UIColor(red: 0.1, green: 0.8, blue: 0.1, alpha: 1.0)
-        } else {
+        
+        switch appliance.state {
+        case .PoweredOff:
             color = UIColor(red: 0.8, green: 0.1, blue: 0.1, alpha: 1.0)
+        case .PoweredOn:
+            color = UIColor(red: 0.1, green: 0.8, blue: 0.1, alpha: 1.0)
+        case .Scheduled:
+            color = UIColor(red: 0.1, green: 0.1, blue: 0.8, alpha: 1.0)
+        case .UpdatingState:
+            color = UIColor(red: 0.8, green: 0.8, blue: 0.1, alpha: 1.0)
+        case .Unknown:
+            color = UIColor(white: 0.5, alpha: 1.0)
         }
+        
         applianceButton.tintColor = color
         
         if let image = UIImage(named: appliance.iconName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate) {
