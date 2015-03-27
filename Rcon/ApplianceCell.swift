@@ -27,11 +27,11 @@ class ApplianceCell: UICollectionViewCell {
     
     func setup() {
         contentView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
-        
         applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
         //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
+        
+        addPulseAnimation()
     }
     
     override func layoutSubviews() {
@@ -63,6 +63,19 @@ class ApplianceCell: UICollectionViewCell {
         } else {
             NSLog("icon for \(appliance.iconName) not found")
         }
+    }
+    
+    func addPulseAnimation() {
+        let pulseAnimation = CAKeyframeAnimation(keyPath: "opacity")
+        pulseAnimation.duration = 2.0
+        pulseAnimation.values = [1.0, 0.0, 1.0]
+        pulseAnimation.keyTimes = [0, 0.5, 1]
+        pulseAnimation.repeatCount = Float.infinity
+        applianceButton.imageView?.layer.addAnimation(pulseAnimation, forKey: "iconPulseAnimation")
+    }
+    
+    func removePulseAnimation() {
+        layer.removeAnimationForKey("iconPulseAnimation")
     }
     
     override func prepareForReuse() {
