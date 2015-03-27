@@ -30,8 +30,6 @@ class ApplianceCell: UICollectionViewCell {
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
         applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
         //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
-        
-        addPulseAnimation()
     }
     
     override func layoutSubviews() {
@@ -42,6 +40,14 @@ class ApplianceCell: UICollectionViewCell {
     func setAppliance(appliance: Appliance) {
         
         let color: UIColor
+        
+        let animationAdded = applianceButton.imageView?.layer.animationForKey("iconPulseAnimation") != nil
+        
+        if appliance.state == .UpdatingState && !animationAdded {
+            addPulseAnimation()
+        } else if appliance.state != .UpdatingState && animationAdded {
+            removePulseAnimation()
+        }
         
         switch appliance.state {
         case .PoweredOff:
@@ -80,6 +86,7 @@ class ApplianceCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         applianceButton.setImage(nil, forState: .Normal)
+        removePulseAnimation()
     }
     
     func applianceButtonTapped(button: UIButton!) {

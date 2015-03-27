@@ -52,6 +52,18 @@ class Appliance {
         self.pin = pin
         self.schedule = []
         self.iconName = label
+        
+        switch rand() % 4 {
+        case 0:
+            state = .PoweredOn
+        case 1:
+            state = .PoweredOff
+        case 2:
+            state = .UpdatingState
+        default:
+            state = .Unknown
+        }
+        
     }
     
     func toggle() {}
