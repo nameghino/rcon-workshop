@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
+		3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEB1AC5D11E00803976 /* Appliance.swift */; };
+		3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */; };
 		3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C30F1AC3B93A0066F83D /* AppDelegate.swift */; };
 		3581C3151AC3B93A0066F83D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		3581C3171AC3B93A0066F83D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
@@ -26,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3552DEE91AC5D0CA00803976 /* SparkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkCore.swift; sourceTree = "<group>"; };
+		3552DEEB1AC5D11E00803976 /* Appliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appliance.swift; sourceTree = "<group>"; };
+		3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplianceCell.swift; sourceTree = "<group>"; };
 		3581C30A1AC3B93A0066F83D /* Rcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3581C30E1AC3B93A0066F83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581C30F1AC3B93A0066F83D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3552DEE81AC5D0B300803976 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3552DEE91AC5D0CA00803976 /* SparkCore.swift */,
+				3552DEEB1AC5D11E00803976 /* Appliance.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3552DEED1AC5D1C300803976 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		3581C3011AC3B93A0066F83D = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +100,8 @@
 		3581C30C1AC3B93A0066F83D /* Rcon */ = {
 			isa = PBXGroup;
 			children = (
+				3552DEED1AC5D1C300803976 /* View */,
+				3552DEE81AC5D0B300803976 /* Model */,
 				3581C30F1AC3B93A0066F83D /* AppDelegate.swift */,
 				3581C3131AC3B93A0066F83D /* Main.storyboard */,
 				3581C3161AC3B93A0066F83D /* Images.xcassets */,
@@ -214,7 +239,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3581C3301AC3C1590066F83D /* AppliancesViewController.swift in Sources */,
+				3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */,
+				3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
+				3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +373,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -357,6 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -416,6 +446,7 @@
 				3581C32B1AC3B93A0066F83D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3581C32C1AC3B93A0066F83D /* Build configuration list for PBXNativeTarget "RconTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +455,7 @@
 				3581C32E1AC3B93A0066F83D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
