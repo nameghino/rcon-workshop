@@ -25,8 +25,10 @@ enum LogicLevel: Int {
 enum SparkCommand {
     static let endpoint = NSURL(string: "https://api.spark.io")!
     
-    case SetPin(SparkPin, Int, Int)
+    case SetPin(SparkPin, Int, LogicLevel)
     case TimedPin(SparkPin, Int, Int)
+    case ReadVariable(String)
+    
     
     var functionName: String {
         get {
@@ -35,6 +37,8 @@ enum SparkCommand {
                 return "setPin"
             case .TimedPin(_, _, _):
                 return "timedPin"
+            case .ReadVariable(let variable):
+                return variable
             }
         }
     }
@@ -43,9 +47,11 @@ enum SparkCommand {
         get {
             switch self {
             case .SetPin(let type, let pin, let level):
-                return "\(type.rawValue)\(pin)@\(level)"
+                return "\(type.rawValue)\(pin)@\(level.rawValue)"
             case .TimedPin(let type, let pin, let millis):
                 return "\(type.rawValue)\(pin)@\(millis)"
+            case .ReadVariable(_):
+                return ""
             }
         }
     }
@@ -53,13 +59,19 @@ enum SparkCommand {
     func request(token: String, coreId: String) -> NSURLRequest {
         let url = NSURL(string: "/v1/devices/\(coreId)/\(self.functionName)", relativeToURL: SparkCommand.endpoint)
         let r = NSMutableURLRequest(URL: url!)
-        r.HTTPMethod = "POST"
         
-        let data = NSJSONSerialization.dataWithJSONObject(["args": self.stringValue], options: NSJSONWritingOptions.allZeros, error: nil)
-        
-        r.HTTPBody = data
+        switch self {
+        case .ReadVariable(_):
+            r.HTTPMethod = "GET"
+        default:
+            r.HTTPMethod = "POST"
+            let data = NSJSONSerialization.dataWithJSONObject(["args": self.stringValue], options: NSJSONWritingOptions.allZeros, error: nil)
+            r.HTTPBody = data
+        }
+
         r.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         r.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        r.setValue("application/json", forHTTPHeaderField: "Accept")
         return r
     }
 }
@@ -74,6 +86,14 @@ class SparkCore: NSObject {
         self.coreId = coreId
         self.authToken = authToken
         self.isOnline = false
+    }
+    
+    func setPin(pin: Int, level: LogicLevel) {
+        let command = SparkCommand.SetPin(SparkPin.Digital, pin, level)
+        sendCommand(command) {
+            (error, response) -> Void in
+            NSLog("setPin(\(pin), \(level.rawValue)) -> (\(error.localizedDescription), \(response))")
+        }
     }
     
     private func sendCommand(command: SparkCommand, callback: SparkCoreCommandCallback) {
@@ -100,5 +120,9 @@ class SparkCore: NSObject {
         }
         task.resume()
     }
+}
+
+class SparkCoreManager {
+    var cores: [SparkCore] = []
 }
 
