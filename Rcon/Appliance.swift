@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum ApplianceState {
+    case PoweredOn
+    case PoweredOff
+    case UpdatingState
+    case Scheduled
+    case Unknown
+}
+
 class ApplianceSchedule {
     let from: NSDate
     let to: NSDate
@@ -20,27 +28,40 @@ class ApplianceSchedule {
     }
 }
 
+/*
+ * Appliance
+ *
+ * State: 
+ *                      / Powered on  -> Updating
+ * Unknown -> Updating -
+ *                      \ Powered off -> Updating
+ */
+
 class Appliance {
-    let label: String
+    var label: String
     let core: SparkCore
     let pin: UInt8
     let schedule: [ApplianceSchedule]
     
-    var isOn: Bool
-    var iconName: String {
-        get {
-            let color = isOn ? "on" : "off"
-            //return "\(label)-\(color)"
-            return "\(label)-off"
-        }
-    }
+    var state: ApplianceState = .Unknown
+    var iconName: String
     
     init(label: String, core: SparkCore, pin: UInt8) {
         self.label = label
         self.core = core
         self.pin = pin
         self.schedule = []
-        self.isOn = false
+        self.iconName = label
+    }
+    
+    func toggle() {}
+    
+    func powerOn() {
+        core.setPin(Int(pin), level: LogicLevel.High)
+    }
+    
+    func powerOff() {
+        core.setPin(Int(pin), level: LogicLevel.Low)
     }
 }
 
