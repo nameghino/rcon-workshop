@@ -14,7 +14,7 @@ protocol ApplianceCellDelegate: class {
 }
 
 class ApplianceCell: UICollectionViewCell {
-    static let ReuseIdentifier: String = "ApplianceCell"
+    static var ReuseIdentifier: String { get { return "ApplianceCell" } }
     
     weak var delegate: ApplianceCellDelegate?
     
