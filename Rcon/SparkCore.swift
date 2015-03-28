@@ -91,12 +91,14 @@ class SparkCore: NSObject {
     var state: SparkCoreStatus
     var isOnline: Bool { get { return state == .Online } }
     var coreDescription: String
+    var lastHeard: NSDate
     
     init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
         self.authToken = authToken
         self.state = .Unknown
         self.coreDescription = description
+        self.lastHeard = NSDate.distantPast() as! NSDate
     }
     
     func setPin(pin: Int, level: LogicLevel) {
@@ -105,6 +107,44 @@ class SparkCore: NSObject {
             (error, response) -> Void in
             NSLog("setPin(\(pin), \(level.rawValue)) -> (\(error.localizedDescription), \(response))")
         }
+    }
+    
+    /*
+     * Response
+
+    {
+        "id": "53ff75065075535155461187",
+        "name": "HOME",
+        "connected": true,
+        "variables": {
+            "pinState": "string"
+        },
+        "functions": [
+            "setPin",
+            "timedPin",
+            "togglePin"
+        ],
+            "cc3000_patch_version": "1.29",
+            "last_heard": "2015-03-28T15:38:01.142Z"
+    }
+    */
+
+
+    func updateCloudState(callback: SparkCoreCommandCallback) {
+        let request = SharedSparkService.createSparkCoreInformationRequest(self)
+        let taskId = SharedSparkService.submitRequest(request) {
+            [unowned self](error, info) -> Void in
+            self.coreDescription = info["name"] as! String
+            if info["connected"] as! Bool == true {
+                self.state = .Online
+            } else {
+                self.state = .Offline
+            }
+            if let cb = callback {
+                cb(error, info)
+            }
+        }
+        
     }
     
     private func sendCommand(command: SparkCommand, callback: SparkCoreCommandCallback) {
