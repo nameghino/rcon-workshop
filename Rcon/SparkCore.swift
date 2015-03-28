@@ -11,6 +11,8 @@ import UIKit
 typealias JSONDictionary = [String:AnyObject]
 typealias SparkCoreCommandCallback = ((NSError!, JSONDictionary) -> Void)?
 
+let SharedSparkCoreManager = SparkCoreManager()
+
 enum SparkPin: String {
     case Analog = "A"
     case Digital = "D"
@@ -20,6 +22,12 @@ enum SparkPin: String {
 enum LogicLevel: Int {
     case Low = 0
     case High = 1
+}
+
+enum SparkCoreStatus {
+    case Unknown
+    case Online
+    case Offline
 }
 
 enum SparkCommand {
@@ -80,12 +88,15 @@ enum SparkCommand {
 class SparkCore: NSObject {
     var coreId: String
     var authToken: String
-    var isOnline: Bool
+    var state: SparkCoreStatus
+    var isOnline: Bool { get { return state == .Online } }
+    var coreDescription: String
     
-    init(coreId: String, authToken: String) {
+    init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
         self.authToken = authToken
-        self.isOnline = false
+        self.state = .Unknown
+        self.coreDescription = description
     }
     
     func setPin(pin: Int, level: LogicLevel) {
@@ -124,5 +135,8 @@ class SparkCore: NSObject {
 
 class SparkCoreManager {
     var cores: [SparkCore] = []
+    func addCore(description: String, coreId: String, authToken: String) {
+        cores.append(SparkCore(description: description, coreId: coreId, authToken: authToken))
+    }
 }
 
