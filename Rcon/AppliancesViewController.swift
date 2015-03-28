@@ -8,7 +8,8 @@
 
 import UIKit
 
-let core = SparkCore(coreId: "MY-SPARK-CORE", authToken: "MY-AUTH-TOKEN")
+let AUTH_TOKEN = "4ed8196934ddcddb658bb894ed0faea1718466ca"
+let CORE_ID = "55ff6a065075555350461887"
 
 var applianceTypes = ["blender", "fan", "fridge", "heater-horizontal", "projector", "stove", "toaster", "washing-machine"]
 
@@ -44,6 +45,9 @@ class AppliancesViewController: UIViewController {
     @IBAction func addAppliance(sender: AnyObject) {
         let label = applianceTypes[SharedApplianceManager.appliances.count]
         let pin = UInt8(SharedApplianceManager.appliances.count)
+        
+        let core = SharedSparkCoreManager.cores.first!
+        
         SharedApplianceManager.createAppliance(label, core: core, pin: pin)
         appliancesCollectionView.reloadData()
     }
