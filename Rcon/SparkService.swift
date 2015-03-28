@@ -69,6 +69,8 @@ class SparkService: NSObject {
         }
         let taskIdentifier = NSUUID().UUIDString
         activeTasks[taskIdentifier] = task
+        NSLog("requesting \(request.URL?.absoluteString)")
+        task.resume()
         return taskIdentifier
     }
     
