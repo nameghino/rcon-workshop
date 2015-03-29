@@ -27,9 +27,7 @@ class CoreTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCore(core: SparkCore) {
-        coreIdLabel.text = core.coreId
-        coreDescriptionLabel.text = core.coreDescription
+    func setStatusColor(core: SparkCore) {
         let statusColor: UIColor
         switch (core.state) {
         case .Online:
@@ -40,6 +38,19 @@ class CoreTableViewCell: UITableViewCell {
             statusColor = UIColor.grayColor()
         }
         coreStatusView.color = statusColor
+        coreStatusView.setNeedsDisplay()
+    }
+    
+    func setCore(core: SparkCore) {
+        coreIdLabel.text = core.coreId
+        coreDescriptionLabel.text = core.coreDescription
+        setStatusColor(core)
+        core.updateCloudState() {
+            [unowned self] (error, dictionary) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.setStatusColor(core)
+            }
+        }
     }
     
 }
