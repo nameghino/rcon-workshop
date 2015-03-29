@@ -34,16 +34,17 @@ class AddCoreViewController: UIViewController {
     }
     
     func acceptButtonTapped(sender: UIButton!) {
+        NSLog("accept tapped")
         SharedSparkCoreManager.addCore(
             coreDescriptionTextField.text,
             coreId: coreIdTextField.text,
             authToken: coreAuthTokenTextField.text)
-        
-        self.cancelButtonTapped(sender)
+        self.performSegueWithIdentifier(kCoresViewControllerUnwindFromDoneIdentifier, sender: nil)
     }
     
     func cancelButtonTapped(sender: UIButton!) {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        NSLog("cancel tapped")
+        self.performSegueWithIdentifier(kCoresViewControllerUnwindFromCancelIdentifier, sender: nil)
     }
 
     

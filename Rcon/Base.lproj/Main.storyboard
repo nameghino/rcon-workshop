@@ -275,9 +275,12 @@
                         <outlet property="coreAuthTokenTextField" destination="U21-SX-QRW" id="q1w-SF-Vbi"/>
                         <outlet property="coreDescriptionTextField" destination="DbE-rL-vbE" id="era-h6-kJz"/>
                         <outlet property="coreIdTextField" destination="0Uw-Vr-UCD" id="uP6-dl-qV9"/>
+                        <segue destination="7eP-yH-lhi" kind="unwind" identifier="CoresViewControllerUnwindFromCancel" unwindAction="unwindToList:" id="6o8-x5-fQY"/>
+                        <segue destination="7eP-yH-lhi" kind="unwind" identifier="CoresViewControllerUnwindFromDone" unwindAction="unwindToList:" id="CJV-z5-alc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GM1-HS-58b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7eP-yH-lhi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1813.5" y="-408.5"/>
         </scene>

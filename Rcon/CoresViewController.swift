@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kCoresViewControllerUnwindFromDoneIdentifier = "CoresViewControllerUnwindFromDone"
+let kCoresViewControllerUnwindFromCancelIdentifier = "CoresViewControllerUnwindFromCancel"
+
 class CoresViewController: UIViewController {
 
     @IBOutlet weak var coresTableView: UITableView!
@@ -25,15 +28,18 @@ class CoresViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func unwindToList(sender: UIStoryboardSegue) {
+        switch sender.identifier! {
+        case kCoresViewControllerUnwindFromCancelIdentifier:
+            break
+        case kCoresViewControllerUnwindFromDoneIdentifier:
+            break
+        default:
+            break
+        }
+        coresTableView.reloadData()
+        NSLog("unwinded!")
     }
-    */
 
 }
 
