@@ -125,12 +125,12 @@
 				3552DEF21AC65D6E00803976 /* Controller */,
 				3552DEED1AC5D1C300803976 /* View */,
 				3552DEE81AC5D0B300803976 /* Model */,
-				3581C30F1AC3B93A0066F83D /* AppDelegate.swift */,
-				3581C3131AC3B93A0066F83D /* Main.storyboard */,
-				3581C3161AC3B93A0066F83D /* Images.xcassets */,
-				3581C3181AC3B93A0066F83D /* LaunchScreen.xib */,
 				3581C30D1AC3B93A0066F83D /* Supporting Files */,
+				3581C3161AC3B93A0066F83D /* Images.xcassets */,
+				3581C30F1AC3B93A0066F83D /* AppDelegate.swift */,
 				3552DEF01AC5F4AA00803976 /* SparkService.swift */,
+				3581C3131AC3B93A0066F83D /* Main.storyboard */,
+				3581C3181AC3B93A0066F83D /* LaunchScreen.xib */,
 			);
 			path = Rcon;
 			sourceTree = "<group>";
@@ -404,6 +404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -417,6 +418,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
