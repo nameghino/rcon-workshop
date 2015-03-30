@@ -8,9 +8,6 @@
 
 import UIKit
 
-let AUTH_TOKEN = "4ed8196934ddcddb658bb894ed0faea1718466ca"
-let CORE_ID = "55ff6a065075555350461887"
-
 var applianceTypes = ["blender", "fan", "fridge", "heater-horizontal", "projector", "stove", "toaster", "washing-machine"]
 
 class AppliancesViewController: UIViewController {
