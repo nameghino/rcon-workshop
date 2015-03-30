@@ -8,6 +8,26 @@
 
 import UIKit
 
+struct HardcodedCoreData {
+    let d: String
+    let id: String
+    let t: String
+}
+
+let GLBCORE1 = HardcodedCoreData(
+    d: "mariano's core",
+    id: "55ff6a065075555350461887",
+    t: "4ed8196934ddcddb658bb894ed0faea1718466ca"
+)
+
+let GLBCORE2 = HardcodedCoreData(
+    d: "nico's core",
+    id: "53ff75065075535155461187",
+    t: "be564f2a4fd695c2c5c927e3a4c9e2777449547f"
+)
+
+let SELECTED_CORE = GLBCORE2
+
 class AddCoreViewController: UIViewController {
 
     @IBOutlet weak var coreDescriptionTextField: UITextField!
@@ -23,9 +43,9 @@ class AddCoreViewController: UIViewController {
         acceptButton.addTarget(self, action: "acceptButtonTapped:", forControlEvents: .TouchUpInside)
         cancelButton.addTarget(self, action: "cancelButtonTapped:", forControlEvents: .TouchUpInside)
         
-        coreDescriptionTextField.text = "mariano's core"
-        coreIdTextField.text = CORE_ID
-        coreAuthTokenTextField.text = AUTH_TOKEN
+        coreDescriptionTextField.text = SELECTED_CORE.d
+        coreIdTextField.text = SELECTED_CORE.id
+        coreAuthTokenTextField.text = SELECTED_CORE.t
     }
 
     override func didReceiveMemoryWarning() {
