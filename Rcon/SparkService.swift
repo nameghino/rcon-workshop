@@ -94,7 +94,11 @@ enum SparkServiceEndpoints {
             default:
                 dict = nil
             }
-            return NSJSONSerialization.dataWithJSONObject(dict!, options: .allZeros, error: nil)
+            if dict != nil {
+                return NSJSONSerialization.dataWithJSONObject(dict!, options: .allZeros, error: nil)
+            } else {
+                return nil
+            }
         }
     }
     
