@@ -84,16 +84,46 @@ class ApplianceCell: UICollectionViewCell {
         applianceButton.imageView?.layer.removeAnimationForKey("iconPulseAnimation")
     }
     
+    /*
+    func addTapAnimation() {
+        let animation = CAKeyframeAnimation(keyPath: "transform")
+        
+        animation.values = [
+            NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 0.0)),
+            NSValue(CATransform3D: CATransform3DMakeScale(2.0, 2.0, 0.0)),
+            NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 0.0)),
+        ]
+        
+        animation.keyTimes = [0, 0.5, 1]
+        animation.repeatCount = 1
+        animation.duration = 1.0
+        applianceButton.imageView?.layer.addAnimation(animation, forKey: "tapAnimation")
+    }
+    
+    func removeTapAnimation() {
+        applianceButton.imageView?.layer.removeAnimationForKey("tapAnimation")
+    }
+    */
+    
     override func prepareForReuse() {
         applianceButton.setImage(nil, forState: .Normal)
         removePulseAnimation()
     }
     
     func applianceButtonTapped(button: UIButton!) {
+        // self.addTapAnimation()
         self.delegate?.applianceButtonTapped(self)
     }
     
     func scheduleButtonTapped(button: UIButton!) {
         self.delegate?.scheduleButtonTapped(self)
+    }
+}
+
+extension ApplianceCell {
+    override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        if anim == applianceButton.imageView?.layer.animationForKey("tapAnimation") {
+            // removeTapAnimation()
+        }
     }
 }
