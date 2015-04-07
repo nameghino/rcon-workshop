@@ -30,10 +30,16 @@ enum SparkCoreStatus {
     case Offline
 }
 
-class SparkCore: NSObject {
+class SparkCore: NSObject, NSCoding {
     var coreId: String
     var authToken: String
-    var state: SparkCoreStatus
+    var state: SparkCoreStatus {
+        didSet {
+            if state == .Online {
+                lastHeard = NSDate()
+            }
+        }
+    }
     var isOnline: Bool { get { return state == .Online } }
     var coreDescription: String
     var lastHeard: NSDate
@@ -46,6 +52,22 @@ class SparkCore: NSObject {
         self.coreDescription = description
         self.lastHeard = NSDate.distantPast() as! NSDate
     }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.coreId = aDecoder.decodeObjectForKey("coreId") as! String
+        self.coreDescription = aDecoder.decodeObjectForKey("coreDescription") as! String
+        self.lastHeard = aDecoder.decodeObjectForKey("lastHeard") as! NSDate
+        self.authToken = aDecoder.decodeObjectForKey("authToken") as! String
+        self.state = .Unknown
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.coreId, forKey: "coreId")
+        aCoder.encodeObject(self.coreDescription, forKey: "coreDescription")
+        aCoder.encodeObject(self.lastHeard, forKey: "lastHeard")
+        aCoder.encodeObject(self.authToken, forKey: "authToken")
+    }
+    
     
     func setPin(pin: Int, level: LogicLevel) {
         let taskId = SharedSparkService.submit(.SetPin(self, pin, level)) {
@@ -97,9 +119,33 @@ class SparkCore: NSObject {
 }
 
 class SparkCoreManager {
+    static let filename = "cores.archive"
+    static var filepath: String {
+        get {
+            return GetDocumentsDirectory().stringByAppendingPathComponent(filename)
+        }
+    }
+    
+    init() {
+        load()
+    }
+    
     var cores: [SparkCore] = []
     func addCore(description: String, coreId: String, authToken: String) {
         cores.append(SparkCore(description: description, coreId: coreId, authToken: authToken))
+        if !save() {
+            NSLog("error saving core table: \(strerror(errno))")
+        }
+    }
+    
+    func save() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(cores, toFile: SparkCoreManager.filepath)
+    }
+    
+    func load() {
+        if let savedCores = NSKeyedUnarchiver.unarchiveObjectWithFile(SparkCoreManager.filepath) as? [SparkCore] {
+            cores = savedCores
+        }
     }
 }
 
