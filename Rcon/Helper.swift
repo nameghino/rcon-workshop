@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+extension Array {
+    func each(block: (T) -> ()) {
+        for i in self {
+            block(i)
+        }
+    }
+}
+
 func GetDocumentsDirectory() -> String {
     return NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as! String
 }
