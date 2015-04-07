@@ -10,10 +10,12 @@ import UIKit
 
 let kCoresViewControllerUnwindFromDoneIdentifier = "CoresViewControllerUnwindFromDone"
 let kCoresViewControllerUnwindFromCancelIdentifier = "CoresViewControllerUnwindFromCancel"
+let kShowCoreInformationDetailSegueIdentifier = "ShowCoreInformationDetailSegue"
 
 class CoresViewController: UIViewController {
-
+    
     @IBOutlet weak var coresTableView: UITableView!
+    var updateTasks = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +23,32 @@ class CoresViewController: UIViewController {
         coresTableView.rowHeight = UITableViewAutomaticDimension
         coresTableView.estimatedRowHeight = CoreTableViewCell.EstimatedRowHeight
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBAction func unwindToList(sender: UIStoryboardSegue) {
-        switch sender.identifier! {
-        case kCoresViewControllerUnwindFromCancelIdentifier:
-            break
-        case kCoresViewControllerUnwindFromDoneIdentifier:
-            break
-        default:
-            break
-        }
         coresTableView.reloadData()
         NSLog("unwinded!")
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == kShowCoreInformationDetailSegueIdentifier {
+            let destination = segue.destinationViewController as! CoreInformationViewController
+            let index = coresTableView.indexPathForCell(sender as! UITableViewCell)?.row
+            let core = SharedSparkCoreManager.cores[index!]
+            destination.core = core
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        updateTasks.each { SharedSparkService.cancelRequest($0) }
+        updateTasks.removeAll(keepCapacity: false)
+    }
+    
 }
 
 extension CoresViewController: UITableViewDataSource {
@@ -55,7 +63,31 @@ extension CoresViewController: UITableViewDataSource {
         
         let core = SharedSparkCoreManager.cores[indexPath.row]
         cell.setCore(core)
+        if core.needsStatusUpdate() {
+            let taskId = core.updateCloudState() {
+                [unowned self](_, _) -> () in
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.coresTableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                }
+            }
+            updateTasks.append(taskId)
+        }
         return cell
-        
+    }
+}
+
+extension CoresViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        switch editingStyle {
+        case .Delete:
+            SharedSparkCoreManager.deleteCore(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        default:
+            break
+        }
     }
 }
