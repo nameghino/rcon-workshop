@@ -33,9 +33,11 @@ class CoreTableViewCell: UITableViewCell {
         case .Online:
             statusColor = UIColor.greenColor()
         case .Offline:
-            statusColor = UIColor.redColor()
+            statusColor = UIColor(white: 0.5, alpha: 0.5)
         case .Unknown:
             statusColor = UIColor.grayColor()
+        case .Error:
+            statusColor = UIColor.redColor()
         }
         coreStatusView.color = statusColor
         coreStatusView.setNeedsDisplay()
@@ -45,12 +47,6 @@ class CoreTableViewCell: UITableViewCell {
         coreIdLabel.text = core.coreId
         coreDescriptionLabel.text = core.coreDescription
         setStatusColor(core)
-        core.updateCloudState() {
-            [unowned self] (error, dictionary) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                self.setStatusColor(core)
-            }
-        }
     }
     
 }
