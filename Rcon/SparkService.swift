@@ -20,6 +20,44 @@ let SharedSparkService = SparkService()
 let kAPIHost = "https://api.spark.io"
 let kAPIVersion = "v1"
 
+
+
+enum SparkServiceErrors: Int {
+    case NonstandardError = -1
+    case OK = 200
+    case BadRequest = 400
+    case Unauthorized = 401
+    case Forbidden = 403
+    case NotFound = 404
+    case TimedOut = 408
+    case InternalServerError = 500
+
+    static var Domain = "SparkCloudAPIDomain"
+    
+    var description: String {
+        get {
+            switch self {
+            case .OK:
+                return "All good"
+            case .BadRequest:
+                return "Your request is not understood by the Core, or the requested subresource (variable/function) has not been exposed."
+            case .Unauthorized:
+                return "Your access token is not valid"
+            case .Forbidden:
+                return "Your access token is not authorized to interface with this Core."
+            case .NotFound:
+                return "The Core you requested is not currently connected to the cloud."
+            case .TimedOut:
+                return "The cloud experienced a significant delay when trying to reach the Core."
+            case .InternalServerError:
+                return "Spark Cloud is not working correctly. Your core can't be reached until Spark fixes their cloud."
+            default:
+                return "Check the returned JSON for more information"
+            }
+        }
+    }
+}
+
 enum SparkServiceEndpoints {
     case CoreInformation(SparkCore)
     case SetPin(SparkCore, Int, LogicLevel)
@@ -140,17 +178,41 @@ class SparkService: NSObject {
             (data, response, error) in
             if let cb = callback {
                 if error != nil {
-                    NSLog("error: \(error.localizedDescription)")
+                    NSLog("data task error: \(error.localizedDescription)")
                     cb(error, [:])
                 } else {
-                    NSLog("response: \(data.stringRepresentation)")
+                    if let httpResponse = response as? NSHTTPURLResponse {
                         var jsonError: NSError?
-                    if let jdict = NSJSONSerialization.JSONObjectWithData(data,
-                        options: NSJSONReadingOptions.allZeros,
-                        error: &jsonError) as? JSONDictionary {
-                            cb(nil, jdict)
-                    } else {
-                        cb(jsonError!, [:])
+                        if let jdict = NSJSONSerialization.JSONObjectWithData(data,
+                            options: NSJSONReadingOptions.allZeros,
+                            error: &jsonError) as? JSONDictionary {
+                                if httpResponse.statusCode > 399 {
+                                    NSLog("server side error")
+                                    // server side error
+                                    let apiError: NSError
+                                    if let standardError = SparkServiceErrors(rawValue: httpResponse.statusCode) {
+                                        // known errors
+                                        NSLog("standard server side error")
+                                        apiError = NSError(domain: SparkServiceErrors.Domain,
+                                            code: standardError.rawValue,
+                                            userInfo: [NSLocalizedDescriptionKey: standardError.description])
+                                        
+                                    } else {
+                                        // unknown errors
+                                        NSLog("nonstandard server side error")
+                                        apiError = NSError(domain: SparkServiceErrors.Domain,
+                                            code: SparkServiceErrors.NonstandardError.rawValue,
+                                            userInfo: [NSLocalizedDescriptionKey: SparkServiceErrors.NonstandardError.description])
+                                    }
+                                    cb(apiError, jdict)
+                                } else {
+                                    NSLog("all good!")
+                                    cb(nil, jdict)
+                                }
+                        } else {
+                            NSLog("error parsing json")
+                            cb(jsonError!, [:])
+                        }
                     }
                 }
             }
