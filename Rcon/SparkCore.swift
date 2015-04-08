@@ -120,9 +120,6 @@ class SparkCore: NSObject, NSCoding {
     func updateCloudState(callback: SparkCoreCommandCallback) -> String {
         let taskId = SharedSparkService.submit(SparkServiceEndpoints.CoreInformation(self)) {
             [unowned self](error, info) -> Void in
-            
-            self.lastCloudStatusUpdate = NSDate()
-            
             if let errorTitle = info["error"] as? String {
                 self.state = .Error
                 self.message = "\(errorTitle)"
@@ -138,6 +135,7 @@ class SparkCore: NSObject, NSCoding {
                     } else {
                         self.state = .Offline
                     }
+                    self.lastCloudStatusUpdate = NSDate()
                 } else {
                     self.state = .Unknown
                 }
@@ -145,6 +143,13 @@ class SparkCore: NSObject, NSCoding {
             if let cb = callback {
                 cb(error, info)
             }
+        }
+        return taskId
+    }
+    
+    func updatePinState(callback: SparkCoreCommandCallback) -> String {
+        let taskId = SharedSparkService.submit(SparkServiceEndpoints.PinState(self)) {
+            [unowned self](error, info) -> Void in
         }
         return taskId
     }
