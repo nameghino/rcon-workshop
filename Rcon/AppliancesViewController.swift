@@ -33,7 +33,7 @@ class AppliancesViewController: UIViewController {
             )
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -76,7 +76,10 @@ extension AppliancesViewController: ApplianceCellDelegate {
         if let indexPath = appliancesCollectionView.indexPathForCell(cell) {
             var appliance = SharedApplianceManager.appliances[indexPath.item]
             appliance.toggle()
-            appliancesCollectionView.reloadItemsAtIndexPaths([indexPath])
+            UIView.performWithoutAnimation {
+                [unowned self] () -> () in
+                self.appliancesCollectionView.reloadItemsAtIndexPaths([indexPath])
+            }
         }
     }
     
