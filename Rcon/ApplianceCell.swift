@@ -28,6 +28,7 @@ class ApplianceCell: UICollectionViewCell {
     func setup() {
         contentView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
+        contentView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: "longPressRecognizer:"))
         applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
         //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
     }
@@ -84,12 +85,45 @@ class ApplianceCell: UICollectionViewCell {
         applianceButton.imageView?.layer.removeAnimationForKey("iconPulseAnimation")
     }
     
-    override func prepareForReuse() {
-        applianceButton.setImage(nil, forState: .Normal)
-        removePulseAnimation()
+    func applianceButtonTapped(button: UIButton!) {
+        // self.addTapAnimation()
+        self.delegate?.applianceButtonTapped(self)
     }
     
     func scheduleButtonTapped(button: UIButton!) {
         self.delegate?.scheduleButtonTapped(self)
     }
+    
+    func longPressRecognizer(recognizer: UILongPressGestureRecognizer!) {
+        if recognizer.state == UIGestureRecognizerState.Began {
+            NSLog("longpress")
+            let menuController = UIMenuController.sharedMenuController()
+            let point = recognizer.locationInView(self.contentView)
+            if !menuController.menuVisible {
+                let isFirstResponsder = recognizer.view!.becomeFirstResponder()
+                menuController.arrowDirection = .Down
+                menuController.menuItems = [UIMenuItem(title: "delete", action: "delete:")]
+                menuController.setTargetRect(CGRect(origin: point, size: CGSizeZero), inView: recognizer.view!.superview!)
+                menuController.setMenuVisible(true, animated: true)
+            }
+        }
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        return action == "delete:"
+    }
+    
+    override func delete(sender: AnyObject?) {
+        NSLog("delete")
+    }
+    
+    override func prepareForReuse() {
+        applianceButton.setImage(nil, forState: .Normal)
+        removePulseAnimation()
+    }
+    
 }
