@@ -11,6 +11,7 @@ import UIKit
 protocol ApplianceCellDelegate: class {
     func applianceButtonTapped(cell: ApplianceCell)
     func scheduleButtonTapped(cell: ApplianceCell)
+    func deleteButtonTapped(cell: ApplianceCell)
 }
 
 class ApplianceCell: UICollectionViewCell {
@@ -85,7 +86,7 @@ class ApplianceCell: UICollectionViewCell {
         applianceButton.imageView?.layer.removeAnimationForKey("iconPulseAnimation")
     }
     
-    func applianceButtonTapped(button: UIButton!) {
+    func applianceButtonTapped(button: AnyObject?) {
         // self.addTapAnimation()
         self.delegate?.applianceButtonTapped(self)
     }
@@ -96,16 +97,15 @@ class ApplianceCell: UICollectionViewCell {
     
     func longPressRecognizer(recognizer: UILongPressGestureRecognizer!) {
         if recognizer.state == UIGestureRecognizerState.Began {
-            NSLog("longpress")
+            //self.delegate?.longPressDetected(self)
+            NSLog("show menu")
+            //let point = recognizer.locationInView(self)
+            self.becomeFirstResponder()
             let menuController = UIMenuController.sharedMenuController()
-            let point = recognizer.locationInView(self.contentView)
-            if !menuController.menuVisible {
-                let isFirstResponsder = recognizer.view!.becomeFirstResponder()
-                menuController.arrowDirection = .Down
-                menuController.menuItems = [UIMenuItem(title: "delete", action: "delete:")]
-                menuController.setTargetRect(CGRect(origin: point, size: CGSizeZero), inView: recognizer.view!.superview!)
-                menuController.setMenuVisible(true, animated: true)
-            }
+            if menuController.menuVisible { return }
+            menuController.menuItems = [UIMenuItem(title: "Schedule", action: "scheduleButtonTapped:")]
+            menuController.setTargetRect(applianceButton.frame, inView: self)
+            menuController.setMenuVisible(true, animated: true)
         }
     }
     
@@ -114,11 +114,18 @@ class ApplianceCell: UICollectionViewCell {
     }
     
     override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        return action == "delete:"
+        switch action {
+        case "delete:":
+            return true
+        case "scheduleButtonTapped:":
+            return true
+        default:
+            return false
+        }
     }
     
     override func delete(sender: AnyObject?) {
-        NSLog("delete")
+        self.delegate?.deleteButtonTapped(self)
     }
     
     override func prepareForReuse() {
