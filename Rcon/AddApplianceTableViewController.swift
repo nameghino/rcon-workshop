@@ -30,6 +30,7 @@ class AddApplianceTableViewController: UITableViewController {
             target: self,
             action: "createAppliance:")
         self.navigationItem.rightBarButtonItem = button
+        applianceNameTextField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -116,6 +117,13 @@ class AddApplianceTableViewController: UITableViewController {
                 })
             self.presentViewController(alertController, animated: true, completion: nil)
         }
+    }
+}
+
+extension AddApplianceTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
