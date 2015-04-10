@@ -165,7 +165,15 @@ class SparkCore: NSObject, NSCoding {
 
 class SparkCoreManager {
     
-    var cores: [SparkCore] = []
+    var coreIndex: [String: SparkCore] = [:]
+    var cores: [SparkCore] {
+        get {
+            return sorted(coreIndex.values.array) {
+                (e1, e2) -> Bool in
+                return e1.coreId < e2.coreId
+            }
+        }
+    }
     
     static let filename = "cores.archive"
     static var filepath: String {
@@ -179,23 +187,28 @@ class SparkCoreManager {
     }
     
     func addCore(description: String, coreId: String, authToken: String) {
-        cores.append(SparkCore(description: description, coreId: coreId, authToken: authToken))
+        coreIndex[coreId] = SparkCore(description: description, coreId: coreId, authToken: authToken)
         if !save() {
             NSLog("error saving core table: \(strerror(errno))")
         }
     }
     
     func deleteCore(core: SparkCore) {
-        if let index = find(cores, core) {
-            self.deleteCore(index)
-        }
+        self.deleteCore(core.coreId)
     }
     
     func deleteCore(index: Int) {
-        let core = cores.removeAtIndex(index)
-        core.cancelAllTasks()
-        if !save() {
-            NSLog("error saving core table: \(strerror(errno))")
+        let core = cores[index]
+        self.deleteCore(core)
+    }
+    
+    func deleteCore(id: String) {
+        if let core = coreIndex[id] {
+            core.cancelAllTasks()
+            coreIndex.removeValueForKey(id)
+            if !save() {
+                NSLog("error saving core table: \(strerror(errno))")
+            }
         }
     }
     
@@ -205,9 +218,11 @@ class SparkCoreManager {
     
     func load() {
         NSLog("\(SparkCoreManager.filepath)")
-
+        
         if let savedCores = NSKeyedUnarchiver.unarchiveObjectWithFile(SparkCoreManager.filepath) as? [SparkCore] {
-            cores = savedCores
+            for core in savedCores {
+                coreIndex[core.coreId] = core
+            }
         }
     }
 }
