@@ -14,19 +14,19 @@ struct HardcodedCoreData {
     let t: String
 }
 
-let GLBCORE1 = HardcodedCoreData(
-    d: "mariano's core",
-    id: "55ff6a065075555350461887",
+let GLBCORE3 = HardcodedCoreData(
+    d: "c3",
+    id: "55ff71065075555338581687",
     t: "4ed8196934ddcddb658bb894ed0faea1718466ca"
 )
 
-let GLBCORE2 = HardcodedCoreData(
-    d: "nico's core",
-    id: "53ff75065075535155461187",
-    t: "be564f2a4fd695c2c5c927e3a4c9e2777449547f"
+let GLBCORE_DOOR = HardcodedCoreData(
+    d: "door",
+    id: "55ff71065075555353261887",
+    t: "4ed8196934ddcddb658bb894ed0faea1718466ca"
 )
 
-let SELECTED_CORE = GLBCORE1
+let SELECTED_CORE = GLBCORE3
 
 class AddCoreViewController: UIViewController {
 
