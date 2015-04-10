@@ -169,13 +169,15 @@ class SparkService: NSObject {
     }
     
     func submit(endpoint: SparkServiceEndpoints, callback: SparkCoreCommandCallback) -> String {
-        return self.submitRequest(endpoint.request, callback: callback)
+        return self.submitRequest(endpoint.request, core: endpoint.core, callback: callback)
     }
     
-    private func submitRequest(request: NSURLRequest, callback: SparkCoreCommandCallback) -> String {
+    private func submitRequest(request: NSURLRequest, core: SparkCore, callback: SparkCoreCommandCallback) -> String {
         let session = NSURLSession.sharedSession()
+        let taskIdentifier = NSUUID().UUIDString
         let task = session.dataTaskWithRequest(request) {
             (data, response, error) in
+            core.activeTasks.removeAtIndex(find(core.activeTasks, taskIdentifier)!)
             if let cb = callback {
                 if error != nil {
                     NSLog("data task error: \(error.localizedDescription)")
@@ -217,8 +219,8 @@ class SparkService: NSObject {
                 }
             }
         }
-        let taskIdentifier = NSUUID().UUIDString
         activeTasks[taskIdentifier] = task
+        core.activeTasks.append(taskIdentifier)
         NSLog("requesting \(request.URL?.absoluteString)")
         task.resume()
         return taskIdentifier

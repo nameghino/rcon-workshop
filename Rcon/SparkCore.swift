@@ -46,9 +46,13 @@ class SparkCore: NSObject, NSCoding {
     var coreDescription: String
     var lastHeard: NSDate
     var pinState: [LogicLevel] = []
-    var message: String?
     var appliances: [Appliance] = []
+    var label: String = ""
+    
+    
+    var message: String?
     var lastCloudStatusUpdate: NSDate
+    var activeTasks: [String] = []
     
     init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
@@ -148,6 +152,10 @@ class SparkCore: NSObject, NSCoding {
         }
         return taskId
     }
+    
+    func cancelAllTasks() {
+        activeTasks.each { SharedSparkService.cancelRequest($0) }
+    }
 }
 
 class SparkCoreManager {
@@ -174,15 +182,13 @@ class SparkCoreManager {
     
     func deleteCore(core: SparkCore) {
         if let index = find(cores, core) {
-            cores.removeAtIndex(index)
-            if !save() {
-                NSLog("error saving core table: \(strerror(errno))")
-            }
+            self.deleteCore(index)
         }
     }
     
     func deleteCore(index: Int) {
-        cores.removeAtIndex(index)
+        let core = cores.removeAtIndex(index)
+        core.cancelAllTasks()
         if !save() {
             NSLog("error saving core table: \(strerror(errno))")
         }
