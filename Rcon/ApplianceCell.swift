@@ -11,6 +11,7 @@ import UIKit
 protocol ApplianceCellDelegate: class {
     func applianceButtonTapped(cell: ApplianceCell)
     func scheduleButtonTapped(cell: ApplianceCell)
+    func deleteButtonTapped(cell: ApplianceCell)
 }
 
 class ApplianceCell: UICollectionViewCell {
@@ -28,6 +29,7 @@ class ApplianceCell: UICollectionViewCell {
     func setup() {
         contentView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
+        contentView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: "longPressRecognizer:"))
         applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
         //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
     }
@@ -84,12 +86,51 @@ class ApplianceCell: UICollectionViewCell {
         applianceButton.imageView?.layer.removeAnimationForKey("iconPulseAnimation")
     }
     
-    override func prepareForReuse() {
-        applianceButton.setImage(nil, forState: .Normal)
-        removePulseAnimation()
+    func applianceButtonTapped(button: AnyObject?) {
+        // self.addTapAnimation()
+        self.delegate?.applianceButtonTapped(self)
     }
     
     func scheduleButtonTapped(button: UIButton!) {
         self.delegate?.scheduleButtonTapped(self)
     }
+    
+    func longPressRecognizer(recognizer: UILongPressGestureRecognizer!) {
+        if recognizer.state == UIGestureRecognizerState.Began {
+            //self.delegate?.longPressDetected(self)
+            NSLog("show menu")
+            //let point = recognizer.locationInView(self)
+            self.becomeFirstResponder()
+            let menuController = UIMenuController.sharedMenuController()
+            if menuController.menuVisible { return }
+            menuController.menuItems = [UIMenuItem(title: "Schedule", action: "scheduleButtonTapped:")]
+            menuController.setTargetRect(applianceButton.frame, inView: self)
+            menuController.setMenuVisible(true, animated: true)
+        }
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        switch action {
+        case "delete:":
+            return true
+        case "scheduleButtonTapped:":
+            return true
+        default:
+            return false
+        }
+    }
+    
+    override func delete(sender: AnyObject?) {
+        self.delegate?.deleteButtonTapped(self)
+    }
+    
+    override func prepareForReuse() {
+        applianceButton.setImage(nil, forState: .Normal)
+        removePulseAnimation()
+    }
+    
 }

@@ -26,7 +26,7 @@ let GLBCORE2 = HardcodedCoreData(
     t: "be564f2a4fd695c2c5c927e3a4c9e2777449547f"
 )
 
-let SELECTED_CORE = GLBCORE2
+let SELECTED_CORE = GLBCORE1
 
 class AddCoreViewController: UIViewController {
 

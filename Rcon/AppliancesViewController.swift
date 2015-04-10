@@ -86,6 +86,27 @@ extension AppliancesViewController: ApplianceCellDelegate {
         }
     }
     
+    func deleteButtonTapped(cell: ApplianceCell) {
+        if let indexPath = appliancesCollectionView.indexPathForCell(cell) {
+            var appliance = SharedApplianceManager.appliances[indexPath.item]
+            
+            let alertController = UIAlertController(title: "Are you sure?", message: "You will delete this appliance", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Yes", style: .Destructive) {
+                [unowned self] (action) -> Void in
+                SharedApplianceManager.deleteAppliance(appliance)
+                self.appliancesCollectionView.deleteItemsAtIndexPaths([indexPath])
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            
+            alertController.addAction(UIAlertAction(title: "No", style: .Cancel) {
+                [unowned self] (action) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
     func scheduleButtonTapped(cell: ApplianceCell) {
         NSLog("go to schedule")
     }
