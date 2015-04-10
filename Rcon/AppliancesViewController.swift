@@ -34,6 +34,10 @@ class AppliancesViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         appliancesCollectionView.reloadData()
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "applianceStateChangeNotificationReceived:",
+            name: kApplianceStateChangedNotification,
+            object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +47,16 @@ class AppliancesViewController: UIViewController {
     
     @IBAction func unwindToAppliances(sender: UIStoryboardSegue) {
         NSLog("unwinded!")
+    }
+    
+    func applianceStateChangeNotificationReceived(notification: NSNotification) {
+        if let index = find(SharedApplianceManager.appliances, notification.object as! Appliance) {
+            let ip = NSIndexPath(forItem: index, inSection: 0)
+            dispatch_async(dispatch_get_main_queue()) {
+                [unowned self] () -> () in
+                self.appliancesCollectionView.reloadItemsAtIndexPaths([ip])
+            }
+        }
     }
 
 }
@@ -73,6 +87,7 @@ extension AppliancesViewController: ApplianceCellDelegate {
         if let indexPath = appliancesCollectionView.indexPathForCell(cell) {
             var appliance = SharedApplianceManager.appliances[indexPath.item]
             appliance.toggle()
+            appliance.state = .UpdatingState
             UIView.performWithoutAnimation {
                 [unowned self] () -> () in
                 self.appliancesCollectionView.reloadItemsAtIndexPaths([indexPath])

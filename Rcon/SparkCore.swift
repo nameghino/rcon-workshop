@@ -87,10 +87,21 @@ class SparkCore: NSObject, NSCoding {
     }
     
     
-    func setPin(pin: Int, level: LogicLevel) {
+    func setPin(pin: Int, level: LogicLevel, callback: SparkCoreCommandCallback) {
         let taskId = SharedSparkService.submit(.SetPin(self, pin, level)) {
-            (error, response) -> Void in
-            NSLog("setPin(\(pin), \(level.rawValue)) -> (\(error.localizedDescription), \(response))")
+            [unowned self](error, response) -> Void in
+            if error != nil {
+                NSLog("error setting pin: \(error.localizedDescription)")
+            } else {
+                let rv = response["return_value"] as! Int
+                if rv == 0 {
+                    self.pinState[pin] = level
+                }
+                NSLog("setPin(\(pin), \(level.rawValue)) -> \(response))")
+                if let cb = callback {
+                    cb(error, response)
+                }
+            }
         }
     }
     

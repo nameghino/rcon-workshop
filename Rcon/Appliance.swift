@@ -8,6 +8,8 @@
 
 import UIKit
 
+let kApplianceStateChangedNotification = "ApplianceStateChanged"
+
 enum ApplianceState {
     case PoweredOn
     case PoweredOff
@@ -82,19 +84,6 @@ class Appliance: NSObject, NSCoding {
         self.pin = pin
         self.schedule = []
         self.iconName = type
-        
-        let s = Int(arc4random_uniform(4))
-        
-        switch s % 4 {
-        case 0:
-            state = .PoweredOn
-        case 1:
-            state = .PoweredOff
-        case 2:
-            state = .UpdatingState
-        default:
-            state = .Unknown
-        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -115,20 +104,36 @@ class Appliance: NSObject, NSCoding {
     func toggle() {
         switch self.state {
         case .PoweredOff:
-            self.state = .PoweredOn
+            powerOn()
         case .PoweredOn:
-            self.state = .PoweredOff
+            powerOff()
         default:
             break
         }
     }
     
     func powerOn() {
-        core!.setPin(Int(pin), level: LogicLevel.High)
+        core!.setPin(Int(pin), level: LogicLevel.High) {
+            [unowned self] (_, response) -> Void in
+            let rv = response["return_value"] as! Int
+            if rv == 0 {
+                self.state = .PoweredOn
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
+            
+        }
     }
     
     func powerOff() {
-        core!.setPin(Int(pin), level: LogicLevel.Low)
+        core!.setPin(Int(pin), level: LogicLevel.Low) {
+            [unowned self] (_, response) -> Void in
+            let rv = response["return_value"] as! Int
+            if rv == 0 {
+                self.state = .PoweredOff
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
+        }
+        
     }
 }
 
