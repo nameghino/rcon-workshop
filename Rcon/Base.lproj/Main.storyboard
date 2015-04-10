@@ -52,6 +52,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="145" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Sl-7A-p2f">
+                                                    <rect key="frame" x="8" y="115" width="129" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlF-3l-cJ5">
                                                     <rect key="frame" x="40" y="43" width="64" height="64"/>
                                                     <constraints>
@@ -62,28 +68,19 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcZ-fN-CFh">
-                                                    <rect key="frame" x="40" y="112" width="64" height="30"/>
-                                                    <state key="normal" title="Schedule">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="MbN-QO-gXk" kind="show" id="hEk-DP-k0c"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="6Sl-7A-p2f" firstAttribute="top" secondItem="HlF-3l-cJ5" secondAttribute="bottom" constant="8" id="9XH-o7-6Kt"/>
                                             <constraint firstAttribute="centerX" secondItem="HlF-3l-cJ5" secondAttribute="centerX" constant="0.5" id="ApH-W2-ve7"/>
-                                            <constraint firstAttribute="centerX" secondItem="fcZ-fN-CFh" secondAttribute="centerX" constant="0.5" id="LVL-Fb-nue"/>
-                                            <constraint firstItem="fcZ-fN-CFh" firstAttribute="top" secondItem="HlF-3l-cJ5" secondAttribute="bottom" constant="5" id="a1B-mG-Qbv"/>
-                                            <constraint firstAttribute="centerY" secondItem="HlF-3l-cJ5" secondAttribute="centerY" id="h1T-Vb-a3D"/>
-                                            <constraint firstItem="fcZ-fN-CFh" firstAttribute="width" secondItem="HlF-3l-cJ5" secondAttribute="width" id="uVu-QV-Yl2"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="6Sl-7A-p2f" secondAttribute="bottom" constant="6" id="K9a-wd-9jx"/>
+                                            <constraint firstItem="6Sl-7A-p2f" firstAttribute="leading" secondItem="O4s-zM-mQE" secondAttribute="leadingMargin" id="bqi-QG-Atv"/>
+                                            <constraint firstItem="6Sl-7A-p2f" firstAttribute="trailing" secondItem="O4s-zM-mQE" secondAttribute="trailingMargin" id="yh2-Y4-vOs"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="applianceButton" destination="HlF-3l-cJ5" id="GGi-ep-uyo"/>
-                                            <outlet property="scheduleButton" destination="fcZ-fN-CFh" id="VCn-4k-USV"/>
+                                            <outlet property="applianceLabel" destination="6Sl-7A-p2f" id="seG-my-Qfl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -115,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUZ-s4-RV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849.5" y="390.5"/>
+            <point key="canvasLocation" x="849" y="390"/>
         </scene>
         <!--Core Management-->
         <scene sceneID="G0f-E7-Efe">
@@ -369,11 +366,11 @@
                         <viewControllerLayoutGuide type="bottom" id="OOJ-qQ-BOE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AW5-Af-uIJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3eX-E7-BAb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
@@ -514,6 +511,9 @@
                                                     <state key="normal" title="Tap to select">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="showPinSelector:" destination="k1e-rF-DFs" eventType="touchUpInside" id="u3s-97-sTK"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

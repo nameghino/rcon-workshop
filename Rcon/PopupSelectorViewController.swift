@@ -26,6 +26,11 @@ class PopupSelectorViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         titleLabel.text = titleText
+        if onSelectionChangeBlock != nil {
+            let index = pickerView.selectedRowInComponent(0)
+            let option = options[index]
+            onSelectionChangeBlock(index, option)
+        }
     }
 
     override func didReceiveMemoryWarning() {

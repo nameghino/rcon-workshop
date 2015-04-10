@@ -120,7 +120,6 @@ class Appliance: NSObject, NSCoding {
                 self.state = .PoweredOn
             }
             NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
-            
         }
     }
     
@@ -133,7 +132,6 @@ class Appliance: NSObject, NSCoding {
             }
             NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
         }
-        
     }
 }
 
@@ -147,6 +145,13 @@ class ApplianceManager {
     func createAppliance(label: String, core: SparkCore, pin: UInt8, type: String) -> Bool {
         let a = Appliance(label: label, core: core, pin: pin, type: type)
         core.appliances.append(a)
+        let p = Int(pin)
+        let ps = core.pinState[p]
+        if ps == .High {
+            a.state = .PoweredOn
+        } else {
+            a.state = .PoweredOff
+        }
         return SharedSparkCoreManager.save()
     }
     

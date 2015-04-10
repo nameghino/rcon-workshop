@@ -54,6 +54,17 @@ class SparkCore: NSObject, NSCoding {
     var lastCloudStatusUpdate: NSDate
     var activeTasks: [String] = []
     
+    var freePins: [UInt8] {
+        get {
+            let set = Set(0..<8 as Range<UInt8>)
+            let occupied = Set (self.appliances.map { $0.pin })
+            var a = Array(set.subtract(occupied))
+            sort(&a)
+            return a
+        }
+    }
+    
+    
     init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
         self.authToken = authToken

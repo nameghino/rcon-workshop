@@ -17,7 +17,7 @@ let kDimmerViewTag = 25
 class AddApplianceTableViewController: UITableViewController {
     
     @IBOutlet weak var applianceNameTextField: UITextField!
-    var selectedCoreName: String!
+    var selectedCore: SparkCore!
     var selectedApplianceType: String!
     var selectedPin: Int!
     
@@ -46,6 +46,7 @@ class AddApplianceTableViewController: UITableViewController {
                 [unowned self](index, option) -> () in
                 NSLog("appliance type selected: \(option)")
                 self.selectedApplianceType = option
+                sender.setTitle(option, forState: .Normal)
                 self.removeSelectorController()
                 
             }
@@ -63,8 +64,9 @@ class AddApplianceTableViewController: UITableViewController {
             pickerController.options = SharedSparkCoreManager.cores.map { $0.coreDescription }
             pickerController.titleText = "Select your core"
             pickerController.onDismissBlock = {
-                (index, option) -> () in
-                self.selectedCoreName = option
+                (index, option: String) -> () in
+                self.selectedCore = SharedSparkCoreManager.getCore(option)
+                sender.setTitle(option, forState: .Normal)
                 self.removeSelectorController()
             }
             pickerController.onSelectionChangeBlock = {
@@ -76,11 +78,33 @@ class AddApplianceTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func showPinSelector(sender: AnyObject!) {
+        if selectedCore == nil { return }
+        if let sb = self.storyboard {
+            let pickerController = sb.instantiateViewControllerWithIdentifier(kPopupSelectorViewControllerIdentifier) as! PopupSelectorViewController
+            pickerController.options = selectedCore.freePins.map { "\($0)" }
+            pickerController.titleText = "Select the pin"
+            pickerController.onDismissBlock = {
+                (index, option: String) -> () in
+                self.selectedPin = option.toInt()!
+                sender.setTitle(option, forState: .Normal)
+                self.removeSelectorController()
+            }
+            pickerController.onSelectionChangeBlock = {
+                (index, option) -> () in
+                sender.setTitle(option, forState: .Normal)
+            }
+            
+            displaySelectorController(pickerController)
+        }
+    }
+
+    
     func createAppliance(sender: AnyObject) {
         let label = applianceNameTextField.text
-        let pin = 1 as UInt8
+        let pin = UInt8(selectedPin)
         let type = selectedApplianceType
-        let core = SharedSparkCoreManager.getCore(selectedCoreName)
+        let core = selectedCore
         if (SharedApplianceManager.createAppliance(label, core: core, pin: pin, type: type)) {
             self.navigationController?.popViewControllerAnimated(true)
         } else {

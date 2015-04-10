@@ -19,8 +19,8 @@ class ApplianceCell: UICollectionViewCell {
     
     weak var delegate: ApplianceCellDelegate?
     
+    @IBOutlet weak var applianceLabel: UILabel!
     @IBOutlet weak var applianceButton: UIButton!
-    @IBOutlet weak var scheduleButton: UIButton!
     
     override func awakeFromNib() {
         setup()
@@ -31,7 +31,6 @@ class ApplianceCell: UICollectionViewCell {
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "applianceButtonTapped:"))
         contentView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: "longPressRecognizer:"))
         applianceButton.addTarget(self, action: "applianceButtonTapped:", forControlEvents: .TouchUpInside)
-        //scheduleButton.addTarget(self, action: "scheduleButtonTapped:", forControlEvents: .TouchUpInside)
     }
     
     override func layoutSubviews() {
@@ -50,6 +49,8 @@ class ApplianceCell: UICollectionViewCell {
         } else if appliance.state != .UpdatingState && animationAdded {
             removePulseAnimation()
         }
+        
+        applianceLabel.text = appliance.label
         
         switch appliance.state {
         case .PoweredOff:
