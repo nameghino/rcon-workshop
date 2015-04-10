@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		354DD0641AD8355500B6EA7E /* AddApplianceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */; };
+		354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */; };
 		3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
 		3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEB1AC5D11E00803976 /* Appliance.swift */; };
 		3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddApplianceTableViewController.swift; sourceTree = "<group>"; };
+		354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupSelectorViewController.swift; sourceTree = "<group>"; };
 		3552DEE91AC5D0CA00803976 /* SparkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkCore.swift; sourceTree = "<group>"; };
 		3552DEEB1AC5D11E00803976 /* Appliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appliance.swift; sourceTree = "<group>"; };
 		3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplianceCell.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				3552DEF31AC65D9900803976 /* CoresViewController.swift */,
 				3552DEF51AC65DB100803976 /* AddCoreViewController.swift */,
 				357FFCAF1AD409EF006C80D9 /* CoreInformationViewController.swift */,
+				354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */,
+				354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,12 +284,14 @@
 				357FFCB01AD409EF006C80D9 /* CoreInformationViewController.swift in Sources */,
 				357FFCAE1AD3FE44006C80D9 /* Helper.swift in Sources */,
 				3552DEF41AC65D9900803976 /* CoresViewController.swift in Sources */,
+				354DD0641AD8355500B6EA7E /* AddApplianceTableViewController.swift in Sources */,
 				3581C3301AC3C1590066F83D /* AppliancesViewController.swift in Sources */,
 				3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */,
 				3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
 				3552DEF81AC65E2500803976 /* CoreTableViewCell.swift in Sources */,
 				3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */,
+				354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */,
 				3552DEF11AC5F4AA00803976 /* SparkService.swift in Sources */,
 				3552DEF61AC65DB100803976 /* AddCoreViewController.swift in Sources */,
 				3552DEFA1AC6601500803976 /* CoreStatusView.swift in Sources */,
@@ -417,7 +425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -432,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

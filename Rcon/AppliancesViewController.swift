@@ -8,8 +8,6 @@
 
 import UIKit
 
-var applianceTypes = ["blender", "fan", "fridge", "heater-horizontal", "projector", "stove", "toaster", "washing-machine"]
-
 class AppliancesViewController: UIViewController {
     
     @IBOutlet weak var appliancesCollectionView: UICollectionView!
@@ -48,6 +46,11 @@ class AppliancesViewController: UIViewController {
         SharedApplianceManager.createAppliance(label, core: core, pin: pin)
         appliancesCollectionView.reloadData()
     }
+    
+    @IBAction func unwindToAppliances(sender: UIStoryboardSegue) {
+        NSLog("unwinded!")
+    }
+
 }
 
 extension AppliancesViewController: UICollectionViewDataSource {
