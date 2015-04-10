@@ -39,7 +39,7 @@ class CoresViewController: UIViewController {
         if segue.identifier == kShowCoreInformationDetailSegueIdentifier {
             let destination = segue.destinationViewController as! CoreInformationViewController
             let index = coresTableView.indexPathForCell(sender as! UITableViewCell)?.row
-            let core = SharedSparkCoreManager.cores[index!]
+            let core = SharedSparkCoreManager.getCore(index!)
             destination.core = core
         }
     }
@@ -61,7 +61,7 @@ extension CoresViewController: UITableViewDataSource {
             CoreTableViewCell.ReuseIdentifier,
             forIndexPath: indexPath) as! CoreTableViewCell
         
-        let core = SharedSparkCoreManager.cores[indexPath.row]
+        let core = SharedSparkCoreManager.getCore(indexPath.row)
         cell.setCore(core)
         if core.needsStatusUpdate() {
             let taskId = core.updateCloudState() {

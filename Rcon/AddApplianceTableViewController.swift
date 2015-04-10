@@ -16,11 +16,20 @@ let kDimmerViewTag = 25
 
 class AddApplianceTableViewController: UITableViewController {
     
-    var dimmerLayer: CALayer! = nil
+    @IBOutlet weak var applianceNameTextField: UITextField!
+    var selectedCoreName: String!
+    var selectedApplianceType: String!
+    var selectedPin: Int!
+    
     var selectorController: PopupSelectorViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let button = UIBarButtonItem(
+            barButtonSystemItem: .Done,
+            target: self,
+            action: "createAppliance:")
+        self.navigationItem.rightBarButtonItem = button
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,6 +45,7 @@ class AddApplianceTableViewController: UITableViewController {
             pickerController.onDismissBlock = {
                 [unowned self](index, option) -> () in
                 NSLog("appliance type selected: \(option)")
+                self.selectedApplianceType = option
                 self.removeSelectorController()
                 
             }
@@ -54,7 +64,7 @@ class AddApplianceTableViewController: UITableViewController {
             pickerController.titleText = "Select your core"
             pickerController.onDismissBlock = {
                 (index, option) -> () in
-                NSLog("core selected: \(option)")
+                self.selectedCoreName = option
                 self.removeSelectorController()
             }
             pickerController.onSelectionChangeBlock = {
@@ -63,6 +73,24 @@ class AddApplianceTableViewController: UITableViewController {
             }
             
             displaySelectorController(pickerController)
+        }
+    }
+    
+    func createAppliance(sender: AnyObject) {
+        let label = applianceNameTextField.text
+        let pin = 1 as UInt8
+        let type = selectedApplianceType
+        let core = SharedSparkCoreManager.getCore(selectedCoreName)
+        if (SharedApplianceManager.createAppliance(label, core: core, pin: pin, type: type)) {
+            self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            let alertController = UIAlertController(title: "Error", message: "There was a problem creating the appliance",
+                preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default) {
+                [unowned self](action) -> Void in
+                self.navigationController?.popViewControllerAnimated(true)
+                })
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }

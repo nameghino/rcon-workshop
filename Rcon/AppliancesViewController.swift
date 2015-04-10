@@ -32,19 +32,13 @@ class AppliancesViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        appliancesCollectionView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func addAppliance(sender: AnyObject) {
-        let label = applianceTypes[SharedApplianceManager.appliances.count]
-        let pin = UInt8(SharedApplianceManager.appliances.count)
-        
-        let core = SharedSparkCoreManager.cores.first!
-        
-        SharedApplianceManager.createAppliance(label, core: core, pin: pin)
-        appliancesCollectionView.reloadData()
     }
     
     @IBAction func unwindToAppliances(sender: UIStoryboardSegue) {

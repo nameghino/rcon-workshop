@@ -212,6 +212,18 @@ class SparkCoreManager {
         }
     }
     
+    func getCore(name: String) -> SparkCore {
+        return cores.filter { $0.coreDescription == name }.first!
+    }
+    
+    func getCoreById(id: String) -> SparkCore {
+        return coreIndex[id]!
+    }
+    
+    func getCore(index: Int) -> SparkCore {
+        return cores[index]
+    }
+    
     func save() -> Bool {
         return NSKeyedArchiver.archiveRootObject(cores, toFile: SparkCoreManager.filepath)
     }

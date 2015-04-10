@@ -390,11 +390,11 @@
             </objects>
             <point key="canvasLocation" x="1330" y="391"/>
         </scene>
-        <!--Add Appliance Table View Controller-->
+        <!--Add Appliance-->
         <scene sceneID="4Pf-TY-P5p">
             <objects>
-                <tableViewController id="k1e-rF-DFs" customClass="AddApplianceTableViewController" customModule="Rcon" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dQZ-2K-CGk">
+                <tableViewController title="Add Appliance" id="k1e-rF-DFs" customClass="AddApplianceTableViewController" customModule="Rcon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dQZ-2K-CGk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -532,6 +532,11 @@
                             <outlet property="delegate" destination="k1e-rF-DFs" id="1hW-ec-boW"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="applianceNameTextField" destination="6tc-D6-Cdt" id="XrP-VY-Qu2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="13B-Dj-tsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

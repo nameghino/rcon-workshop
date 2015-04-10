@@ -76,12 +76,12 @@ class Appliance: NSObject, NSCoding {
     var state: ApplianceState = .Unknown
     var iconName: String
     
-    init(label: String, core: SparkCore, pin: UInt8) {
+    init(label: String, core: SparkCore, pin: UInt8, type: String) {
         self.label = label
         self.core = core
         self.pin = pin
         self.schedule = []
-        self.iconName = label
+        self.iconName = type
         
         let s = Int(arc4random_uniform(4))
         
@@ -139,8 +139,8 @@ class ApplianceManager {
         }
     }
     
-    func createAppliance(label: String, core: SparkCore, pin: UInt8) -> Bool {
-        let a = Appliance(label: label, core: core, pin: pin)
+    func createAppliance(label: String, core: SparkCore, pin: UInt8, type: String) -> Bool {
+        let a = Appliance(label: label, core: core, pin: pin, type: type)
         core.appliances.append(a)
         return SharedSparkCoreManager.save()
     }
