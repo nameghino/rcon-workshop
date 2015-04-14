@@ -64,7 +64,6 @@ class SparkCore: NSObject, NSCoding {
         }
     }
     
-    
     init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
         self.authToken = authToken
@@ -72,6 +71,10 @@ class SparkCore: NSObject, NSCoding {
         self.coreDescription = description
         self.lastHeard = NSDate.distantPast() as! NSDate
         self.lastCloudStatusUpdate = NSDate.distantPast() as! NSDate
+        for i in 0..<8 {
+            self.pinState.append(.Low)
+        }
+
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -85,6 +88,9 @@ class SparkCore: NSObject, NSCoding {
         super.init()
         for appliance in self.appliances {
             appliance.core = self
+        }
+        for i in 0..<8 {
+            self.pinState.append(.Low)
         }
     }
     
@@ -163,7 +169,7 @@ class SparkCore: NSObject, NSCoding {
                     }
                     self.lastCloudStatusUpdate = NSDate()
                 } else {
-                    self.state = .Unknown
+                    self.state = .Unknown 
                 }
             }
             if let cb = callback {
@@ -174,11 +180,12 @@ class SparkCore: NSObject, NSCoding {
     }
     
     func updatePinState(callback: SparkCoreCommandCallback) -> String {
+        NSLog("updating core \(coreId): \(appliances)")
+
         let taskId = SharedSparkService.submit(SparkServiceEndpoints.PinState(self)) {
             [unowned self](error, info) -> Void in
             NSLog("pin state for core \(self.coreId): \(info)")
             if let cb = callback {
-                
                 let jpins = info["result"] as! String
                 self.pinState = (NSJSONSerialization.JSONObjectWithData(jpins.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, options: .allZeros, error: nil) as! [Int]).map {
                     (state: Int) -> (LogicLevel) in
@@ -272,21 +279,15 @@ class SparkCoreManager {
     
     func load() {
         NSLog("\(SparkCoreManager.filepath)")
-        
-        let group = dispatch_group_create()
         if let savedCores = NSKeyedUnarchiver.unarchiveObjectWithFile(SparkCoreManager.filepath) as? [SparkCore] {
             for core in savedCores {
-                
                 coreIndex[core.coreId] = core
-                dispatch_group_enter(group)
                 core.updatePinState() {
                     (error, info) -> () in
                     NSLog("done")
-                    dispatch_group_leave(group)
                 }
             }
         }
-        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
         NSLog("returning from load()")
     }
 }
