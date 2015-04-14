@@ -75,7 +75,11 @@ class Appliance: NSObject, NSCoding {
     let pin: UInt8
     let schedule: [ApplianceSchedule]
     
-    var state: ApplianceState = .Unknown
+    var state: ApplianceState = .Unknown {
+        didSet {
+            NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
+        }
+    }
     var iconName: String
     
     init(label: String, core: SparkCore, pin: UInt8, type: String) {
@@ -119,7 +123,6 @@ class Appliance: NSObject, NSCoding {
             if rv == 0 {
                 self.state = .PoweredOn
             }
-            NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
         }
     }
     
@@ -130,7 +133,6 @@ class Appliance: NSObject, NSCoding {
             if rv == 0 {
                 self.state = .PoweredOff
             }
-            NSNotificationCenter.defaultCenter().postNotificationName(kApplianceStateChangedNotification, object: self)
         }
     }
 }
