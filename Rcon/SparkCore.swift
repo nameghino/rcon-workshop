@@ -186,6 +186,10 @@ class SparkCore: NSObject, NSCoding {
             [unowned self](error, info) -> Void in
             NSLog("pin state for core \(self.coreId): \(info)")
             if let cb = callback {
+                if (error != nil) {
+                    cb(error, [:])
+                    return
+                }
                 let jpins = info["result"] as! String
                 self.pinState = (NSJSONSerialization.JSONObjectWithData(jpins.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, options: .allZeros, error: nil) as! [Int]).map {
                     (state: Int) -> (LogicLevel) in
