@@ -26,7 +26,9 @@ let GLBCORE_DOOR = HardcodedCoreData(
     t: "4ed8196934ddcddb658bb894ed0faea1718466ca"
 )
 
-let SELECTED_CORE = GLBCORE3
+let GLBCORE2 = HardcodedCoreData(d: "zapatilla", id: "53ff75065075535155461187", t: "4ed8196934ddcddb658bb894ed0faea1718466ca")
+
+let SELECTED_CORE = GLBCORE2
 
 class AddCoreViewController: UIViewController {
 
