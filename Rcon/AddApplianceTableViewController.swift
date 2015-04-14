@@ -8,8 +8,28 @@
 
 import UIKit
 
-
-let applianceTypes = ["blender", "fan", "fridge", "heater-horizontal", "projector", "stove", "toaster", "washing-machine"]
+let applianceTypes = [
+    "blender",
+    "desktop-phone",
+    "dishwasher",
+    "double-hifi",
+    "dremel",
+    "extractor-kitchen",
+    "fan",
+    "fridge",
+    "hairdryer",
+    "heater-horizontal",
+    "laptop",
+    "microwave",
+    "projector",
+    "reading-lamp",
+    "set-top-box",
+    "sewing-machine",
+    "single-hifi",
+    "stove",
+    "toaster",
+    "washing-machine"
+]
 
 let kPopupSelectorViewControllerIdentifier = "PopupSelectorViewController"
 let kDimmerViewTag = 25
