@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E390C121AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */; };
+		0E390C161AEFE0400052827F /* CoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FFCAF1AD409EF006C80D9 /* CoreInformationViewController.swift */; };
+		0E390C171AEFE0400052827F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FFCAD1AD3FE44006C80D9 /* Helper.swift */; };
+		0E390C181AEFE0400052827F /* CoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF31AC65D9900803976 /* CoresViewController.swift */; };
+		0E390C191AEFE0400052827F /* AddApplianceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */; };
+		0E390C1A1AEFE0400052827F /* AppliancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */; };
+		0E390C1B1AEFE0400052827F /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
+		0E390C1C1AEFE0400052827F /* ApplianceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEE1AC5D1D200803976 /* ApplianceCell.swift */; };
+		0E390C1D1AEFE0400052827F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C30F1AC3B93A0066F83D /* AppDelegate.swift */; };
+		0E390C1E1AEFE0400052827F /* CoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF71AC65E2500803976 /* CoreTableViewCell.swift */; };
+		0E390C1F1AEFE0400052827F /* Appliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEEB1AC5D11E00803976 /* Appliance.swift */; };
+		0E390C201AEFE0400052827F /* PopupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */; };
+		0E390C211AEFE0400052827F /* SparkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF01AC5F4AA00803976 /* SparkService.swift */; };
+		0E390C221AEFE0400052827F /* AddCoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF51AC65DB100803976 /* AddCoreViewController.swift */; };
+		0E390C231AEFE0400052827F /* CoreStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF91AC6601500803976 /* CoreStatusView.swift */; };
+		0E390C251AEFE0400052827F /* libFTC_RELEASE_ARM_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */; };
+		0E390C281AEFE0400052827F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
+		0E390C291AEFE0400052827F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3181AC3B93A0066F83D /* LaunchScreen.xib */; };
+		0E390C2A1AEFE0400052827F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
 		354DD0641AD8355500B6EA7E /* AddApplianceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */; };
 		354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */; };
 		3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
@@ -38,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E390C0F1AEFDFF90052827F /* FirstTimeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeConfig.h; sourceTree = "<group>"; };
+		0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFTC_DEBUG_ARM_64.a; sourceTree = "<group>"; };
+		0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFTC_RELEASE_ARM_64.a; sourceTree = "<group>"; };
+		0E390C2E1AEFE0400052827F /* Rcon copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rcon copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E390C2F1AEFE0400052827F /* Rcon copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Rcon copy-Info.plist"; path = "/Users/nicolas.ameghino/src/rcon-workshop/Rcon copy-Info.plist"; sourceTree = "<absolute>"; };
 		354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddApplianceTableViewController.swift; sourceTree = "<group>"; };
 		354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupSelectorViewController.swift; sourceTree = "<group>"; };
 		3552DEE91AC5D0CA00803976 /* SparkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkCore.swift; sourceTree = "<group>"; };
@@ -63,10 +87,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0E390C241AEFE0400052827F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E390C251AEFE0400052827F /* libFTC_RELEASE_ARM_64.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3581C3071AC3B93A0066F83D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E390C121AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +113,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E390C0E1AEFDFD70052827F /* libFTC */ = {
+			isa = PBXGroup;
+			children = (
+				0E390C0F1AEFDFF90052827F /* FirstTimeConfig.h */,
+				0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */,
+				0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */,
+			);
+			name = libFTC;
+			sourceTree = "<group>";
+		};
 		3552DEE81AC5D0B300803976 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +169,7 @@
 				3581C30C1AC3B93A0066F83D /* Rcon */,
 				3581C3221AC3B93A0066F83D /* RconTests */,
 				3581C30B1AC3B93A0066F83D /* Products */,
+				0E390C2F1AEFE0400052827F /* Rcon copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +178,7 @@
 			children = (
 				3581C30A1AC3B93A0066F83D /* Rcon.app */,
 				3581C31F1AC3B93A0066F83D /* RconTests.xctest */,
+				0E390C2E1AEFE0400052827F /* Rcon copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +186,7 @@
 		3581C30C1AC3B93A0066F83D /* Rcon */ = {
 			isa = PBXGroup;
 			children = (
+				0E390C0E1AEFDFD70052827F /* libFTC */,
 				357FFCAC1AD3FE35006C80D9 /* Helpers */,
 				3552DEF21AC65D6E00803976 /* Controller */,
 				3552DEED1AC5D1C300803976 /* View */,
@@ -183,6 +229,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0E390C141AEFE0400052827F /* Rcon Release */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E390C2B1AEFE0400052827F /* Build configuration list for PBXNativeTarget "Rcon Release" */;
+			buildPhases = (
+				0E390C151AEFE0400052827F /* Sources */,
+				0E390C241AEFE0400052827F /* Frameworks */,
+				0E390C271AEFE0400052827F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Rcon Release";
+			productName = Rcon;
+			productReference = 0E390C2E1AEFE0400052827F /* Rcon copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		3581C3091AC3B93A0066F83D /* Rcon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3581C3291AC3B93A0066F83D /* Build configuration list for PBXNativeTarget "Rcon" */;
@@ -252,11 +315,22 @@
 			targets = (
 				3581C3091AC3B93A0066F83D /* Rcon */,
 				3581C31E1AC3B93A0066F83D /* RconTests */,
+				0E390C141AEFE0400052827F /* Rcon Release */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E390C271AEFE0400052827F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E390C281AEFE0400052827F /* Main.storyboard in Resources */,
+				0E390C291AEFE0400052827F /* LaunchScreen.xib in Resources */,
+				0E390C2A1AEFE0400052827F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3581C3081AC3B93A0066F83D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,6 +351,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0E390C151AEFE0400052827F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E390C161AEFE0400052827F /* CoreInformationViewController.swift in Sources */,
+				0E390C171AEFE0400052827F /* Helper.swift in Sources */,
+				0E390C181AEFE0400052827F /* CoresViewController.swift in Sources */,
+				0E390C191AEFE0400052827F /* AddApplianceTableViewController.swift in Sources */,
+				0E390C1A1AEFE0400052827F /* AppliancesViewController.swift in Sources */,
+				0E390C1B1AEFE0400052827F /* SparkCore.swift in Sources */,
+				0E390C1C1AEFE0400052827F /* ApplianceCell.swift in Sources */,
+				0E390C1D1AEFE0400052827F /* AppDelegate.swift in Sources */,
+				0E390C1E1AEFE0400052827F /* CoreTableViewCell.swift in Sources */,
+				0E390C1F1AEFE0400052827F /* Appliance.swift in Sources */,
+				0E390C201AEFE0400052827F /* PopupSelectorViewController.swift in Sources */,
+				0E390C211AEFE0400052827F /* SparkService.swift in Sources */,
+				0E390C221AEFE0400052827F /* AddCoreViewController.swift in Sources */,
+				0E390C231AEFE0400052827F /* CoreStatusView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3581C3061AC3B93A0066F83D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,6 +431,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0E390C2C1AEFE0400052827F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Rcon copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rcon",
+				);
+				PRODUCT_NAME = "Rcon copy";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0E390C2D1AEFE0400052827F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Rcon copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rcon",
+				);
+				PRODUCT_NAME = "Rcon copy";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		3581C3271AC3B93A0066F83D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +560,11 @@
 				INFOPLIST_FILE = Rcon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rcon",
+				);
+				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -442,6 +580,11 @@
 				INFOPLIST_FILE = Rcon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Rcon",
+				);
+				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -486,6 +629,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E390C2B1AEFE0400052827F /* Build configuration list for PBXNativeTarget "Rcon Release" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E390C2C1AEFE0400052827F /* Debug */,
+				0E390C2D1AEFE0400052827F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3581C3051AC3B93A0066F83D /* Build configuration list for PBXProject "Rcon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
