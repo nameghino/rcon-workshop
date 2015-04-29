@@ -26,6 +26,9 @@
 		0E390C281AEFE0400052827F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		0E390C291AEFE0400052827F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3181AC3B93A0066F83D /* LaunchScreen.xib */; };
 		0E390C2A1AEFE0400052827F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
+		0E390C311AF139650052827F /* ConnectStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E390C301AF139650052827F /* ConnectStripViewController.swift */; };
+		0E390C341AF1495D0052827F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C331AF1495D0052827F /* CFNetwork.framework */; };
+		0E390C361AF149820052827F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C351AF149820052827F /* SystemConfiguration.framework */; };
 		354DD0641AD8355500B6EA7E /* AddApplianceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */; };
 		354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */; };
 		3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEE91AC5D0CA00803976 /* SparkCore.swift */; };
@@ -42,19 +45,8 @@
 		3581C3151AC3B93A0066F83D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		3581C3171AC3B93A0066F83D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
 		3581C31A1AC3B93A0066F83D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3181AC3B93A0066F83D /* LaunchScreen.xib */; };
-		3581C3261AC3B93A0066F83D /* RconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C3251AC3B93A0066F83D /* RconTests.swift */; };
 		3581C3301AC3C1590066F83D /* AppliancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3581C3201AC3B93A0066F83D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3581C3021AC3B93A0066F83D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3581C3091AC3B93A0066F83D;
-			remoteInfo = Rcon;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E390C0F1AEFDFF90052827F /* FirstTimeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeConfig.h; sourceTree = "<group>"; };
@@ -62,6 +54,10 @@
 		0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFTC_RELEASE_ARM_64.a; sourceTree = "<group>"; };
 		0E390C2E1AEFE0400052827F /* Rcon copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rcon copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E390C2F1AEFE0400052827F /* Rcon copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Rcon copy-Info.plist"; path = "/Users/nicolas.ameghino/src/rcon-workshop/Rcon copy-Info.plist"; sourceTree = "<absolute>"; };
+		0E390C301AF139650052827F /* ConnectStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectStripViewController.swift; sourceTree = "<group>"; };
+		0E390C321AF1477D0052827F /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
+		0E390C331AF1495D0052827F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0E390C351AF149820052827F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddApplianceTableViewController.swift; sourceTree = "<group>"; };
 		354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupSelectorViewController.swift; sourceTree = "<group>"; };
 		3552DEE91AC5D0CA00803976 /* SparkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkCore.swift; sourceTree = "<group>"; };
@@ -80,7 +76,6 @@
 		3581C3141AC3B93A0066F83D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3581C3161AC3B93A0066F83D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3581C3191AC3B93A0066F83D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3581C31F1AC3B93A0066F83D /* RconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3581C3241AC3B93A0066F83D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3581C3251AC3B93A0066F83D /* RconTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RconTests.swift; sourceTree = "<group>"; };
 		3581C32F1AC3C1590066F83D /* AppliancesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppliancesViewController.swift; sourceTree = "<group>"; };
@@ -99,14 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E390C361AF149820052827F /* SystemConfiguration.framework in Frameworks */,
+				0E390C341AF1495D0052827F /* CFNetwork.framework in Frameworks */,
 				0E390C121AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3581C31C1AC3B93A0066F83D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +141,7 @@
 				357FFCAF1AD409EF006C80D9 /* CoreInformationViewController.swift */,
 				354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */,
 				354DD0651AD8363100B6EA7E /* PopupSelectorViewController.swift */,
+				0E390C301AF139650052827F /* ConnectStripViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -166,6 +157,8 @@
 		3581C3011AC3B93A0066F83D = {
 			isa = PBXGroup;
 			children = (
+				0E390C351AF149820052827F /* SystemConfiguration.framework */,
+				0E390C331AF1495D0052827F /* CFNetwork.framework */,
 				3581C30C1AC3B93A0066F83D /* Rcon */,
 				3581C3221AC3B93A0066F83D /* RconTests */,
 				3581C30B1AC3B93A0066F83D /* Products */,
@@ -177,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				3581C30A1AC3B93A0066F83D /* Rcon.app */,
-				3581C31F1AC3B93A0066F83D /* RconTests.xctest */,
 				0E390C2E1AEFE0400052827F /* Rcon copy.app */,
 			);
 			name = Products;
@@ -197,6 +189,7 @@
 				3552DEF01AC5F4AA00803976 /* SparkService.swift */,
 				3581C3131AC3B93A0066F83D /* Main.storyboard */,
 				3581C3181AC3B93A0066F83D /* LaunchScreen.xib */,
+				0E390C321AF1477D0052827F /* Bridging.h */,
 			);
 			path = Rcon;
 			sourceTree = "<group>";
@@ -263,24 +256,6 @@
 			productReference = 3581C30A1AC3B93A0066F83D /* Rcon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3581C31E1AC3B93A0066F83D /* RconTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3581C32C1AC3B93A0066F83D /* Build configuration list for PBXNativeTarget "RconTests" */;
-			buildPhases = (
-				3581C31B1AC3B93A0066F83D /* Sources */,
-				3581C31C1AC3B93A0066F83D /* Frameworks */,
-				3581C31D1AC3B93A0066F83D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3581C3211AC3B93A0066F83D /* PBXTargetDependency */,
-			);
-			name = RconTests;
-			productName = RconTests;
-			productReference = 3581C31F1AC3B93A0066F83D /* RconTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -292,11 +267,7 @@
 				TargetAttributes = {
 					3581C3091AC3B93A0066F83D = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = A45WY99R85;
-					};
-					3581C31E1AC3B93A0066F83D = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 3581C3091AC3B93A0066F83D;
+						DevelopmentTeam = TKH856G5A9;
 					};
 				};
 			};
@@ -314,7 +285,6 @@
 			projectRoot = "";
 			targets = (
 				3581C3091AC3B93A0066F83D /* Rcon */,
-				3581C31E1AC3B93A0066F83D /* RconTests */,
 				0E390C141AEFE0400052827F /* Rcon Release */,
 			);
 		};
@@ -338,13 +308,6 @@
 				3581C3151AC3B93A0066F83D /* Main.storyboard in Resources */,
 				3581C31A1AC3B93A0066F83D /* LaunchScreen.xib in Resources */,
 				3581C3171AC3B93A0066F83D /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3581C31D1AC3B93A0066F83D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +347,7 @@
 				3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */,
 				3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
+				0E390C311AF139650052827F /* ConnectStripViewController.swift in Sources */,
 				3552DEF81AC65E2500803976 /* CoreTableViewCell.swift in Sources */,
 				3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */,
 				354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */,
@@ -393,23 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3581C31B1AC3B93A0066F83D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3581C3261AC3B93A0066F83D /* RconTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3581C3211AC3B93A0066F83D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3581C3091AC3B93A0066F83D /* Rcon */;
-			targetProxy = 3581C3201AC3B93A0066F83D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3581C3131AC3B93A0066F83D /* Main.storyboard */ = {
@@ -567,7 +515,7 @@
 				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Rcon/Bridging.h;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -587,42 +535,8 @@
 				OTHER_CFLAGS = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = Rcon/Bridging.h;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		3581C32D1AC3B93A0066F83D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RconTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rcon.app/Rcon";
-			};
-			name = Debug;
-		};
-		3581C32E1AC3B93A0066F83D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RconTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rcon.app/Rcon";
 			};
 			name = Release;
 		};
@@ -652,15 +566,6 @@
 			buildConfigurations = (
 				3581C32A1AC3B93A0066F83D /* Debug */,
 				3581C32B1AC3B93A0066F83D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3581C32C1AC3B93A0066F83D /* Build configuration list for PBXNativeTarget "RconTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3581C32D1AC3B93A0066F83D /* Debug */,
-				3581C32E1AC3B93A0066F83D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

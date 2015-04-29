@@ -32,6 +32,17 @@ class AppliancesViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if defaults.boolForKey("runAssistant") {
+            if let storyboard = self.storyboard {
+                if let vc = storyboard.instantiateViewControllerWithIdentifier("ConnectStripToNetworkScene") as? UIViewController {
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         appliancesCollectionView.reloadData()
         NSNotificationCenter.defaultCenter().addObserver(self,

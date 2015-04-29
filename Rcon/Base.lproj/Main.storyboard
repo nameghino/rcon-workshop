@@ -23,6 +23,93 @@
             </objects>
             <point key="canvasLocation" x="353" y="391"/>
         </scene>
+        <!--Connect Strip View Controller-->
+        <scene sceneID="E3Q-8G-ATy">
+            <objects>
+                <viewController storyboardIdentifier="ConnectStripToNetworkScene" id="eiO-DU-OiA" customClass="ConnectStripViewController" customModule="Rcon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VIg-5y-AcF"/>
+                        <viewControllerLayoutGuide type="bottom" id="lND-Di-EQA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HTS-Pa-07I">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wi-Fi name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5zi-Nb-xRL">
+                                <rect key="frame" x="159" y="140" width="284" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wi-Fi password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sv-od-LLP">
+                                <rect key="frame" x="159" y="178" width="284" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-hF-siL">
+                                <rect key="frame" x="159" y="216" width="284" height="30"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connect:" destination="eiO-DU-OiA" eventType="touchUpInside" id="p0c-Kc-Dg2"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMj-Jz-zgO">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Connect to the network" id="mG4-oE-1dq">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="9YO-WH-x1f">
+                                            <connections>
+                                                <action selector="dismiss" destination="eiO-DU-OiA" id="Hn1-k9-bfx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your strip to the network" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6q-eE-8TD">
+                                <rect key="frame" x="16" y="94" width="568" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Sv-od-LLP" firstAttribute="top" secondItem="5zi-Nb-xRL" secondAttribute="bottom" constant="8" id="1Xw-eh-p6z"/>
+                            <constraint firstItem="F6q-eE-8TD" firstAttribute="leading" secondItem="HTS-Pa-07I" secondAttribute="leadingMargin" id="5Uv-ve-MTa"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="centerX" secondItem="F6q-eE-8TD" secondAttribute="centerX" constant="0.5" id="HbI-Ju-32M"/>
+                            <constraint firstItem="tMj-Jz-zgO" firstAttribute="top" secondItem="VIg-5y-AcF" secondAttribute="bottom" id="Kz8-kS-ovy"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="width" secondItem="F6q-eE-8TD" secondAttribute="width" multiplier="1/2" id="NwB-BT-8fY"/>
+                            <constraint firstAttribute="width" secondItem="tMj-Jz-zgO" secondAttribute="width" id="Pp8-aM-Q4k"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="top" secondItem="F6q-eE-8TD" secondAttribute="bottom" constant="26" id="S5t-Ww-qID"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="height" secondItem="1Sv-od-LLP" secondAttribute="height" id="UYG-PG-xMc"/>
+                            <constraint firstItem="Gi8-hF-siL" firstAttribute="height" secondItem="1Sv-od-LLP" secondAttribute="height" id="ZJw-3v-dZw"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="width" secondItem="1Sv-od-LLP" secondAttribute="width" id="a8V-tb-DDB"/>
+                            <constraint firstItem="F6q-eE-8TD" firstAttribute="top" secondItem="tMj-Jz-zgO" secondAttribute="bottom" constant="30" id="ftO-AR-SqL"/>
+                            <constraint firstItem="Gi8-hF-siL" firstAttribute="top" secondItem="1Sv-od-LLP" secondAttribute="bottom" constant="8" id="gZT-dp-fKA"/>
+                            <constraint firstAttribute="centerX" secondItem="tMj-Jz-zgO" secondAttribute="centerX" id="h1Y-GX-liO"/>
+                            <constraint firstItem="F6q-eE-8TD" firstAttribute="top" secondItem="VIg-5y-AcF" secondAttribute="bottom" constant="17" id="ksd-Ve-oRe"/>
+                            <constraint firstItem="5zi-Nb-xRL" firstAttribute="centerX" secondItem="1Sv-od-LLP" secondAttribute="centerX" id="oBD-In-x5K"/>
+                            <constraint firstItem="Gi8-hF-siL" firstAttribute="width" secondItem="1Sv-od-LLP" secondAttribute="width" id="pu3-7b-7MB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F6q-eE-8TD" secondAttribute="trailing" id="soa-SY-EAM"/>
+                            <constraint firstItem="Gi8-hF-siL" firstAttribute="centerX" secondItem="1Sv-od-LLP" secondAttribute="centerX" id="yV1-8t-RdR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ksd-Ve-oRe"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="connectButton" destination="Gi8-hF-siL" id="8AN-HH-MQA"/>
+                        <outlet property="passwordTextField" destination="1Sv-od-LLP" id="0fh-Ri-oga"/>
+                        <outlet property="ssidTextField" destination="5zi-Nb-xRL" id="mNc-EM-Zlw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gm0-tG-iDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="1123"/>
+        </scene>
         <!--Appliances-->
         <scene sceneID="Ada-qc-X3b">
             <objects>
