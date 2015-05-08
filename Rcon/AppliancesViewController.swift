@@ -33,6 +33,7 @@ class AppliancesViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        /*
         let defaults = NSUserDefaults.standardUserDefaults()
         if defaults.boolForKey("runAssistant") {
             if let storyboard = self.storyboard {
@@ -41,6 +42,7 @@ class AppliancesViewController: UIViewController {
                 }
             }
         }
+        */
     }
     
     override func viewWillAppear(animated: Bool) {

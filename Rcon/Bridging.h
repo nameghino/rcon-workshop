@@ -6,4 +6,3 @@
 //  Copyright (c) 2015 Nicolas Ameghino. All rights reserved.
 //
 
-#import "FirstTimeConfig.h"

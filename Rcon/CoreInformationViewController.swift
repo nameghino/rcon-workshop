@@ -14,7 +14,7 @@ enum CoreInformationViewControllerSection: Int {
 }
 
 class CoreInformationViewController: UIViewController {
-
+    
     var core: SparkCore!
     @IBOutlet weak var tableView: UITableView!
     lazy var NoAppliancesFooter: UILabel = {
@@ -23,7 +23,7 @@ class CoreInformationViewController: UIViewController {
         label.textAlignment = .Center
         label.textColor = UIColor.lightGrayColor()
         return label
-    }()
+        }()
     
     static let CellReuseIdentifier = "CoreInfomationCell"
     static let InformationFields = [
@@ -36,10 +36,10 @@ class CoreInformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,7 +93,16 @@ extension CoreInformationViewController: UITableViewDataSource {
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.numberOfLines = 0
         cell.textLabel?.text = title
-        if let value = core.valueForKey(key) {
+        switch key {
+        case "coreId":
+            fallthrough
+        case "authToken":
+            cell.selectionStyle = .Default
+        default:
+            cell.selectionStyle = .None
+        }
+        
+        if let value: AnyObject = core.valueForKey(key) {
             cell.detailTextLabel?.text = "\(value)"
         } else {
             cell.detailTextLabel?.text = "no value"
@@ -102,6 +111,7 @@ extension CoreInformationViewController: UITableViewDataSource {
     
     func configureApplianceCell(cell: UITableViewCell, forIndexPath indexPath: NSIndexPath) {
         let appliance = core.appliances[indexPath.row]
+        cell.selectionStyle = .None
         cell.textLabel?.text = appliance.label
         cell.detailTextLabel?.text = appliance.state.description
     }
@@ -121,5 +131,37 @@ extension CoreInformationViewController: UITableViewDelegate {
             return 60.0
         }
         return 0.0
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let (key, title) = CoreInformationViewController.InformationFields[indexPath.row]
+        let alertController = UIAlertController(title: "Edit \(title)", message: nil, preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler {
+            [unowned self] (textfield) -> () in
+            textfield.text = "\(self.core.valueForKey(key)!)"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {
+            [unowned self] (_) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let confirmAction = UIAlertAction(title: "Edit", style: .Default) {
+            [unowned self] (_) -> Void in
+            if let textField = alertController.textFields?.first as? UITextField {
+                self.core.setValue(textField.text, forKey: key)
+                if !SharedSparkCoreManager.save() {
+                    NSLog("Error saving changes")
+                }
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(confirmAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E390C121AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */; };
 		0E390C161AEFE0400052827F /* CoreInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FFCAF1AD409EF006C80D9 /* CoreInformationViewController.swift */; };
 		0E390C171AEFE0400052827F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FFCAD1AD3FE44006C80D9 /* Helper.swift */; };
 		0E390C181AEFE0400052827F /* CoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF31AC65D9900803976 /* CoresViewController.swift */; };
@@ -22,11 +21,9 @@
 		0E390C211AEFE0400052827F /* SparkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF01AC5F4AA00803976 /* SparkService.swift */; };
 		0E390C221AEFE0400052827F /* AddCoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF51AC65DB100803976 /* AddCoreViewController.swift */; };
 		0E390C231AEFE0400052827F /* CoreStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552DEF91AC6601500803976 /* CoreStatusView.swift */; };
-		0E390C251AEFE0400052827F /* libFTC_RELEASE_ARM_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */; };
 		0E390C281AEFE0400052827F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3131AC3B93A0066F83D /* Main.storyboard */; };
 		0E390C291AEFE0400052827F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3181AC3B93A0066F83D /* LaunchScreen.xib */; };
 		0E390C2A1AEFE0400052827F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3581C3161AC3B93A0066F83D /* Images.xcassets */; };
-		0E390C311AF139650052827F /* ConnectStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E390C301AF139650052827F /* ConnectStripViewController.swift */; };
 		0E390C341AF1495D0052827F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C331AF1495D0052827F /* CFNetwork.framework */; };
 		0E390C361AF149820052827F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E390C351AF149820052827F /* SystemConfiguration.framework */; };
 		354DD0641AD8355500B6EA7E /* AddApplianceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD0631AD8355500B6EA7E /* AddApplianceTableViewController.swift */; };
@@ -49,9 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E390C0F1AEFDFF90052827F /* FirstTimeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeConfig.h; sourceTree = "<group>"; };
-		0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFTC_DEBUG_ARM_64.a; sourceTree = "<group>"; };
-		0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFTC_RELEASE_ARM_64.a; sourceTree = "<group>"; };
 		0E390C2E1AEFE0400052827F /* Rcon copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rcon copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E390C2F1AEFE0400052827F /* Rcon copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Rcon copy-Info.plist"; path = "/Users/nicolas.ameghino/src/rcon-workshop/Rcon copy-Info.plist"; sourceTree = "<absolute>"; };
 		0E390C301AF139650052827F /* ConnectStripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectStripViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E390C251AEFE0400052827F /* libFTC_RELEASE_ARM_64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,23 +89,12 @@
 			files = (
 				0E390C361AF149820052827F /* SystemConfiguration.framework in Frameworks */,
 				0E390C341AF1495D0052827F /* CFNetwork.framework in Frameworks */,
-				0E390C121AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E390C0E1AEFDFD70052827F /* libFTC */ = {
-			isa = PBXGroup;
-			children = (
-				0E390C0F1AEFDFF90052827F /* FirstTimeConfig.h */,
-				0E390C101AEFDFF90052827F /* libFTC_DEBUG_ARM_64.a */,
-				0E390C111AEFDFF90052827F /* libFTC_RELEASE_ARM_64.a */,
-			);
-			name = libFTC;
-			sourceTree = "<group>";
-		};
 		3552DEE81AC5D0B300803976 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +160,6 @@
 		3581C30C1AC3B93A0066F83D /* Rcon */ = {
 			isa = PBXGroup;
 			children = (
-				0E390C0E1AEFDFD70052827F /* libFTC */,
 				357FFCAC1AD3FE35006C80D9 /* Helpers */,
 				3552DEF21AC65D6E00803976 /* Controller */,
 				3552DEED1AC5D1C300803976 /* View */,
@@ -347,7 +328,6 @@
 				3552DEEA1AC5D0CA00803976 /* SparkCore.swift in Sources */,
 				3552DEEF1AC5D1D200803976 /* ApplianceCell.swift in Sources */,
 				3581C3101AC3B93A0066F83D /* AppDelegate.swift in Sources */,
-				0E390C311AF139650052827F /* ConnectStripViewController.swift in Sources */,
 				3552DEF81AC65E2500803976 /* CoreTableViewCell.swift in Sources */,
 				3552DEEC1AC5D11E00803976 /* Appliance.swift in Sources */,
 				354DD0661AD8363100B6EA7E /* PopupSelectorViewController.swift in Sources */,
@@ -506,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,7 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Rcon/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
