@@ -64,6 +64,11 @@ class SparkCore: NSObject, NSCoding {
         }
     }
     
+    override class func initialize() {
+        NSKeyedArchiver.setClassName("SparkCore", forClass: self)
+        NSKeyedUnarchiver.setClass(self, forClassName: "SparkCore")
+    }
+    
     init(description: String, coreId: String, authToken: String) {
         self.coreId = coreId
         self.authToken = authToken
